@@ -1,8 +1,14 @@
+:root {
+  --accent_color: #0096EA;
+}
+
 * {
   margin: 0;
   padding: 0;
   font-family: 'Source Code Pro', monospace;
 }
+
+/* link formatting */
 
 a {
 	color: black;
@@ -18,11 +24,16 @@ a:hover {
 	transition: background-position .5s;
 }
 
+
+/* grid formatting */
+
 #project_grid {
 	display: grid;
+	/*
 	grid-template-columns: repeat(4, 25%);
 	grid-template-rows: repeat(3, 150px);
 	grid-gap: 5px;
+	*/
 }
 
 .project_container {
@@ -56,17 +67,28 @@ a:hover {
 	text-align: right;
 }
 
+/* general spacing */
+
 #outer_container {
-	padding: 20%
+	padding-top: 10%;
+/*	padding-left: 10%;
+	padding-right: 10%; */
+	/*width: 500px; */
+	margin: 0 auto;
 }
 
-#name {
+#name, #intro_text {
 	padding-bottom: 30px;
 }
+
+#project_grid {
+	padding-bottom: 60px;
+}
+
+/* intro paragraph/footer */
 
 #intro_text {
 	line-height: 160%;
-	padding-bottom: 30px;
 }
 
 #cube {
@@ -78,8 +100,4 @@ a:hover {
 	font-size: 0.75em;
 	width: 100%;
 	text-align: center;
-}
-
-:root {
-  --accent_color: #0096EA;
 }

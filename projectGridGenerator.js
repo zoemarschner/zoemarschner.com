@@ -1,3 +1,11 @@
+//data storage
+let projectData = null
+let curColumns = null
+
+//layout constants
+const TILE_WIDTH = 200
+const TILE_GUTTER = 10
+const MIN_GRID_MARGIN = 20
 
 //gets project data from json file
 fetch('project_data.json')
@@ -5,24 +13,83 @@ fetch('project_data.json')
     return response.json()
   })
   .then(function(json) {
+  	projectData = json
   	processJson(json)
   });
 
+//add resize listener
 
-//processes json, adding proper elements to DOM
+//------- CODE FOR LAYING OUT ELEMNTS IN PAGE ------- 
+
+//called when the window is resized, determines whether layout needs to be altered
+//if so, fixes the layout
+function winResized() {
+
+}
+
+
+//calculates number of columns needed based on the size of the window
+function numCols() {
+	let width = window.innerWidth
+	let cols = Math.floor((width - (2 * MIN_GRID_MARGIN + TILE_GUTTER)) / (TILE_WIDTH + TILE_GUTTER))
+	return Math.max(1, Math.min(4,  cols))
+}
+
+//sets style of surroding divs/grid for given rows/cols
+function setOverallStyleFor(rows, columns) {
+	//set width of outercontainer
+	document.getElementById("outer_container").style.width = `${(TILE_WIDTH + TILE_GUTTER) * columns - TILE_GUTTER}px`
+
+	//set up grid template/spacing
+	let gridElem = document.getElementById("project_grid")
+
+	gridElem.style.setProperty('grid-template-columns', `repeat(${columns}, ${TILE_WIDTH}px)`)
+	gridElem.style.setProperty('grid-template-rows', `repeat(${rows}, ${TILE_WIDTH}px)`)
+	gridElem.style.setProperty('grid-gap', `${TILE_GUTTER}px`)
+}
+
+//updates the style for the given element based on position data stored in project
+function updateElementStyle(project, element) {
+
+}
+
+//returns node with p element of given class containing given text
+//marked to be highlighted with a span
+function createHighlightedText(ofClass, text) {
+	let pNode = document.createElement("p")
+	pNode.classList.add(ofClass)
+	let spanNode = document.createElement("span")
+	spanNode.classList.add("highlighted")
+	pNode.appendChild(spanNode)
+	let textNode = document.createTextNode(text)
+	spanNode.appendChild(textNode)
+	return pNode
+}
+
+//processes json, adding proper elements to DOM and assigning index to ids to each element
 function processJson(jsonObj) {
 	console.log("STARTING PROCESSING")
-	let i = 0
+	let index = 0
 
-	//perform grid algorithm
-	createGrid(jsonObj, 4)
+	//perform grid algorithm and update style
+	let cols = numCols()
+	let rows = createGrid(jsonObj, cols)
+	setOverallStyleFor(rows, cols)
 
+
+	let gridElem = document.getElementById("project_grid")
 
 	//traverse through array of projects
 	jsonObj.forEach(function(project) {
+
 		//add new div of class project_container
 		let outerDiv = document.createElement("div")
 		outerDiv.classList.add("project_container")
+
+		//set index as id and increment
+		outerDiv.setAttribute("data-index", index)
+		project.id = index
+		index++
 
 		outerDiv.style.gridColumn = `${project.position.col + 1} / span ${project.width}`
 		outerDiv.style.gridRow = `${project.position.row + 1} / span ${project.height}`
@@ -39,16 +106,20 @@ function processJson(jsonObj) {
 		outerDiv.appendChild(createHighlightedText("project_title", project.title))
 
 		//add node to the grid
-		document.getElementById("project_grid").appendChild(outerDiv)
+		gridElem.appendChild(outerDiv)
 
 		console.log(project)
+		
 	})
 }
-const MAX_SWAPS = 1
+
+//------- CODE FOR CREATING GRID LAYOUT ------- 
+
+const MAX_SWAPS = 2
 
 //places projects into grid with given number of columns
 //trys to put projects with higher priority at higher rows and to pack rows tightly
-//returns notiong, position property added to projects in array
+//returns the number of rows, position property added to projects in array
 function createGrid(projects, columns) {
 	//sort the array of projects
 	projects.sort(function(project1, project2) {
@@ -70,6 +141,8 @@ function createGrid(projects, columns) {
 		//position and permutation arrays match indicies
 		projects[orgI].position = results.bestPos[i]
 	} 
+
+	return results.rows
 
 }
 
@@ -252,15 +325,3 @@ function positionElemHelper(element, matrixRep, columns, rowThreshold) {
 	return position
 }
 
-//returns node with p element of given class containing given text
-//marked to be highlighted with a span
-function createHighlightedText(ofClass, text) {
-	let pNode = document.createElement("p")
-	pNode.classList.add(ofClass)
-	let spanNode = document.createElement("span")
-	spanNode.classList.add("highlighted")
-	pNode.appendChild(spanNode)
-	let textNode = document.createTextNode(text)
-	spanNode.appendChild(textNode)
-	return pNode
-}
