@@ -1,11 +1,12 @@
 //data storage
 let projectData = null
-let curColumns = null
+let curCols = null
 
 //layout constants
-const TILE_WIDTH = 200
+const TILE_MAX_WIDTH = 250
+const TILE_MIN_WIDTH = 200
 const TILE_GUTTER = 10
-const MIN_GRID_MARGIN = 20
+const GRID_MARGIN = 50
 
 //gets project data from json file
 fetch('project_data.json')
@@ -18,12 +19,37 @@ fetch('project_data.json')
   });
 
 //add resize listener
+window.addEventListener("resize", winResized)
+window.addEventListener("load", setUpCSSRules)
 
 //------- CODE FOR LAYING OUT ELEMNTS IN PAGE ------- 
 
 //called when the window is resized, determines whether layout needs to be altered
 //if so, fixes the layout
 function winResized() {
+	let newCols = numCols()
+
+	if ((newCols != curCols) && (projectData != null)) {
+
+		//we need to rearrange the columns, call layout method again
+		curCols = newCols
+		//setColsStyle(newCols)
+		let newRows = createGrid(projectData, newCols)
+		resetGridStyle(newRows, curCols)
+
+		//loop through children nodes of grid
+		let tiles = document.getElementById("project_grid").childNodes
+		tiles.forEach(function(element){
+			//get index data, only process if its not null 
+			let index = element.getAttribute("data-index")
+			if (index != null) {
+				//update layout
+				updateElementStyle(projectData[index], element)
+
+			}
+		})
+			
+	}
 
 }
 
@@ -31,26 +57,109 @@ function winResized() {
 //calculates number of columns needed based on the size of the window
 function numCols() {
 	let width = window.innerWidth
-	let cols = Math.floor((width - (2 * MIN_GRID_MARGIN + TILE_GUTTER)) / (TILE_WIDTH + TILE_GUTTER))
-	return Math.max(1, Math.min(4,  cols))
+	let cols = Math.floor((width - (2 * GRID_MARGIN + TILE_GUTTER)) / (TILE_MIN_WIDTH + TILE_GUTTER))
+	return Math.max(2, Math.min(4,  cols))
 }
 
-//sets style of surroding divs/grid for given rows/cols
-function setOverallStyleFor(rows, columns) {
-	//set width of outercontainer
-	document.getElementById("outer_container").style.width = `${(TILE_WIDTH + TILE_GUTTER) * columns - TILE_GUTTER}px`
 
+//set up row style, once algorithm has been called
+function resetGridStyle(rows, cols) {
 	//set up grid template/spacing
 	let gridElem = document.getElementById("project_grid")
+	gridElem.style.setProperty('grid-template-rows', `repeat(${rows}, 1fr)`)
+	gridElem.style.setProperty('grid-template-columns', `repeat(${cols}, 1fr)`)
 
-	gridElem.style.setProperty('grid-template-columns', `repeat(${columns}, ${TILE_WIDTH}px)`)
-	gridElem.style.setProperty('grid-template-rows', `repeat(${rows}, ${TILE_WIDTH}px)`)
-	gridElem.style.setProperty('grid-gap', `${TILE_GUTTER}px`)
+
+	//set the height to what it should be if the 80vw case is met
+	gridElem.style.setProperty('height', `calc(calc(calc(calc(80vw - ${TILE_GUTTER * (cols - 1)}px) / ${cols}) * ${rows}) + ${TILE_GUTTER * (rows - 1)}px)`)
 }
+
 
 //updates the style for the given element based on position data stored in project
 function updateElementStyle(project, element) {
+	element.style.gridColumn = `${project.position.col + 1} / span ${project.width}`
+	element.style.gridRow = `${project.position.row + 1} / span ${project.height}`
 
+}
+
+//sets up css rules that won't change throughout course of program
+//doing this in JS so that we can use constants that can change between runs
+function setUpCSSRules() {
+
+	let sheets = document.styleSheets
+	let styleSheet = sheets[0]
+	let i = 1
+
+	while (styleSheet.cssRules === null && i < sheets.length) {
+		if (sheets[i].cssRules !== null) {
+			styleSheet = sheets[i]
+			break
+		}
+
+		i++
+	}
+
+	//define width of outer container
+	styleSheet.insertRule(`#outer_container{width: 80vw;}`, 0)
+	styleSheet.insertRule(`@media screen and (min-width: ${minWidthFor(5)}px) {#outer_container{width: ${minWidthFor(5) - GRID_MARGIN * 2}px;}}`, styleSheet.cssRules.length)
+
+	//define general properties of grid
+	//default is 2 columns, since we are using greater than for media queries
+	styleSheet.insertRule(`#project_grid {grid-gap: ${TILE_GUTTER}px, grid-template-columns: repeat(2, 1fr);}`, 0)
+
+	//define column layouts with @media queries
+	//set to change column layout at min of next possible number of cols
+	// for (let i = 3; i <= 4; i++) {
+	// 	styleSheet.insertRule(`@media screen and (min-width: ${minWidthFor(i)}px) {#project_grid{grid-template-columns: repeat(${i}, 1fr);}}`, styleSheet.cssRules.length)
+	// }
+
+}
+
+function minWidthFor(columns) {
+	return TILE_MIN_WIDTH * columns + TILE_GUTTER * (columns - 1) + GRID_MARGIN * 2
+}
+
+//processes json, adding proper elements to DOM and assigning index to ids to each element
+function processJson(jsonObj) {
+	let index = 0
+
+	//perform grid algorithm and update style
+	let cols = numCols()
+	curCols = cols
+	//setColsStyle(cols)
+
+	let rows = createGrid(jsonObj, cols)
+	resetGridStyle(rows, curCols)
+
+	let gridElem = document.getElementById("project_grid")
+
+	//traverse through array of projects
+	jsonObj.forEach(function(project) {
+
+		//add new div of class project_container
+		let outerDiv = document.createElement("div")
+		outerDiv.classList.add("project_container")
+		updateElementStyle(project, outerDiv)
+
+		//set index as id and increment
+		outerDiv.setAttribute("data-index", index)
+		project.id = index
+		index++
+
+		//add p of class tag for each tag
+		let tagDiv = document.createElement("div")
+		tagDiv.classList.add("tag_container") 
+		project.tags.forEach(function(tag) {
+			tagDiv.appendChild(createHighlightedText("tag", tag))
+		})
+		outerDiv.appendChild(tagDiv)
+
+		//add p of type project_title for title
+		outerDiv.appendChild(createHighlightedText("project_title", project.title))
+
+		//add node to the grid
+		gridElem.appendChild(outerDiv)		
+	})
 }
 
 //returns node with p element of given class containing given text
@@ -66,52 +175,6 @@ function createHighlightedText(ofClass, text) {
 	return pNode
 }
 
-//processes json, adding proper elements to DOM and assigning index to ids to each element
-function processJson(jsonObj) {
-	console.log("STARTING PROCESSING")
-	let index = 0
-
-	//perform grid algorithm and update style
-	let cols = numCols()
-	let rows = createGrid(jsonObj, cols)
-	setOverallStyleFor(rows, cols)
-
-
-	let gridElem = document.getElementById("project_grid")
-
-	//traverse through array of projects
-	jsonObj.forEach(function(project) {
-
-		//add new div of class project_container
-		let outerDiv = document.createElement("div")
-		outerDiv.classList.add("project_container")
-
-		//set index as id and increment
-		outerDiv.setAttribute("data-index", index)
-		project.id = index
-		index++
-
-		outerDiv.style.gridColumn = `${project.position.col + 1} / span ${project.width}`
-		outerDiv.style.gridRow = `${project.position.row + 1} / span ${project.height}`
-
-		//add p of class tag for each tag
-		let tagDiv = document.createElement("div")
-		tagDiv.classList.add("tag_container") 
-		project.tags.forEach(function(tag) {
-			tagDiv.appendChild(createHighlightedText("tag", tag))
-		})
-		outerDiv.appendChild(tagDiv)
-
-		//add p of type project_title for title
-		outerDiv.appendChild(createHighlightedText("project_title", project.title))
-
-		//add node to the grid
-		gridElem.appendChild(outerDiv)
-
-		console.log(project)
-		
-	})
-}
 
 //------- CODE FOR CREATING GRID LAYOUT ------- 
 
@@ -150,25 +213,19 @@ function createGrid(projects, columns) {
 //helper for generating permutations, returns object with values decribing best permutation order, the disorder num
 // of that permutation and the int rows & positions array of this permutation after looking at given number of swaps
 function recursiveSwaps(projArray, columns, recursionDepth, rowThreshold) {
-	console.log(`IN recursiveSwaps (depth = ${recursionDepth}). rowThreshold is ${rowThreshold}`)
-	console.log(projArray)
+
 	//base case: reached maximum depth
 	if (recursionDepth >= MAX_SWAPS) {
 		//call position elements, return results
 		let baseResults = positionElements(projArray, columns, rowThreshold)
 
-		console.log(`return from positionElements is`)
-		console.log(baseResults)
-
-		if (baseResults) { //there is valid ordering that doesn't go over threshold
+		if (baseResults != null) { //there is valid ordering that doesn't go over threshold
 			
 			//calculate disorder number
 			let difference = 0
 			for (let i = 0; i < projArray.length - 1; i++) {
 				difference += Math.abs(i - projArray[i].priority)
 			}
-
-			console.log(`computed disorder ${difference}`)
 
 			return {bestPermutation: projArray, disorderNum: difference, bestPos: baseResults.positions, rows: baseResults.rows}
 		} else {
@@ -183,14 +240,12 @@ function recursiveSwaps(projArray, columns, recursionDepth, rowThreshold) {
 
 	//first, call on unswapped array
 	let unswappedRes = recursiveSwaps(projArray.slice(), columns, recursionDepth + 1, rowThreshold)
-	if (unswappedRes) {
+	if (unswappedRes != null) {
 		curResults = unswappedRes
 	}
 
 	//for each possible adjacent swap, find best option out of recursive calls
 	for (let i = 0; i < projArray.length - 1; i++) {
-		console.log("CURRENT RESULTS ARE")
-		console.log(curResults)
 		//swap i and i + 1 
 		let thisPermutation = projArray.slice(0, i)
 		thisPermutation.push(projArray[i + 1], projArray[i])
@@ -206,10 +261,6 @@ function recursiveSwaps(projArray, columns, recursionDepth, rowThreshold) {
 
 		if (results && (curResults.bestPermutation == null || curResults.rows > results.rows 
 			|| (curResults.rows == results.rows && results.disorderNum < curResults.disorderNum))) {
-			console.log("replacing results: old")
-			console.log(curResults)
-			console.log("new")
-			console.log(results)
 			curResults = results
 		}
 	}
@@ -225,7 +276,6 @@ function recursiveSwaps(projArray, columns, recursionDepth, rowThreshold) {
 //	positions: ordered array of where each project is stored in this permutation
 //	rows: number of rows this arrangment uses
 function positionElements(projectPerm, columns, rowThreshold) {
-	console.log(`IN position elements`)
 	let rows = 0
 	let positions = []
 	//initialize matrix
@@ -237,11 +287,8 @@ function positionElements(projectPerm, columns, rowThreshold) {
 
 	//loop through projects
 	for (let i = projectPerm.length - 1; i >= 0; i--) {
-		console.log(`looking at element`)
-		console.log(projectPerm[i])
 		position = positionElemHelper(projectPerm[i], matrixRep, columns, rowThreshold)
-		console.log(`got position`)
-		console.log(position)
+		
 		//if null is returned, return null
 		if (!position) {
 			return null
@@ -259,10 +306,7 @@ function positionElements(projectPerm, columns, rowThreshold) {
 //finds the position the element should be in the grid, returns position
 //or null if it would be placed over the rowThreshold 
 function positionElemHelper(element, matrixRep, columns, rowThreshold) {
-	console.log("IN positionElemHelper looking at")
-	console.log(element)
-	console.log("grid is")
-	console.log(matrixRep)
+
 	let position = {}
 
 	//find topmost then leftmost spot where the piece fits
@@ -271,7 +315,6 @@ function positionElemHelper(element, matrixRep, columns, rowThreshold) {
 	rowLoop: while(true) {
 		for (let col = 0; col < columns; col++) {
 			if (row >= matrixRep.length || !matrixRep[row][col]) {
-				console.log(`possibility at ${row} ${col}`)
 				//loop through the blocks this piece would take up
 				let isValid = true
 				blockLoop: for (let width = 0; width < element.width; width++) {
@@ -291,7 +334,6 @@ function positionElemHelper(element, matrixRep, columns, rowThreshold) {
 				//if is valid is true, piece can be placed here.
 				//add rows, store the position and break out of the loop
 				if (isValid) {
-					console.log("found valid position")
 					//return if its greater than rowThreshold
 					if (row + element.height > rowThreshold) {
 						return null

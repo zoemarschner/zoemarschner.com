@@ -1,4 +1,4 @@
-:root {
+ :root {
   --accent_color: #0096EA;
 }
 
@@ -29,6 +29,7 @@ a:hover {
 
 #project_grid {
 	display: grid;
+	grid-gap: 10px;
 	/*
 	grid-template-columns: repeat(4, 25%);
 	grid-template-rows: repeat(3, 150px);
@@ -100,4 +101,6 @@ a:hover {
 	font-size: 0.75em;
 	width: 100%;
 	text-align: center;
+	padding-bottom: 10px;
 }
+
