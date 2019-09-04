@@ -72,6 +72,15 @@ function resetGridStyle(rows, cols) {
 
 	//set the height to what it should be if the 80vw case is met
 	gridElem.style.setProperty('height', `calc(calc(calc(calc(80vw - ${TILE_GUTTER * (cols - 1)}px) / ${cols}) * ${rows}) + ${TILE_GUTTER * (rows - 1)}px)`)
+
+	//add height media query if cols == 4 (that is, if its possible to reach point where we want to display constant width)
+	if (cols == 4) {
+		let styleSheet = getStyleSheet()
+		let curBlockWidth = (5 * TILE_MIN_WIDTH + TILE_GUTTER) / 4
+		console.log(curBlockWidth)
+		styleSheet.insertRule(`@media screen and (min-width: ${minWidthFor(5)}px) {#project_grid{height: ${curBlockWidth * rows + TILE_GUTTER * (rows - 1)}px !important;}}`, styleSheet.cssRules.length)
+	}
+	
 }
 
 
@@ -85,7 +94,20 @@ function updateElementStyle(project, element) {
 //sets up css rules that won't change throughout course of program
 //doing this in JS so that we can use constants that can change between runs
 function setUpCSSRules() {
+	let styleSheet = getStyleSheet()
 
+	//define width of outer container
+	styleSheet.insertRule(`#outer_container{width: 80vw;}`, 0)
+	styleSheet.insertRule(`@media screen and (min-width: ${minWidthFor(5)}px) {#outer_container{width: ${minWidthFor(5) - GRID_MARGIN * 2}px;}}`, styleSheet.cssRules.length)
+
+	//define general properties of grid
+	//default is 2 columns, since we are using greater than for media queries
+	styleSheet.insertRule(`#project_grid {grid-gap: ${TILE_GUTTER}px, grid-template-columns: repeat(2, 1fr);}`, 0)
+
+}
+
+//gets the stylesheet that already has cssRules in it
+function getStyleSheet() {
 	let sheets = document.styleSheets
 	let styleSheet = sheets[0]
 	let i = 1
@@ -99,20 +121,7 @@ function setUpCSSRules() {
 		i++
 	}
 
-	//define width of outer container
-	styleSheet.insertRule(`#outer_container{width: 80vw;}`, 0)
-	styleSheet.insertRule(`@media screen and (min-width: ${minWidthFor(5)}px) {#outer_container{width: ${minWidthFor(5) - GRID_MARGIN * 2}px;}}`, styleSheet.cssRules.length)
-
-	//define general properties of grid
-	//default is 2 columns, since we are using greater than for media queries
-	styleSheet.insertRule(`#project_grid {grid-gap: ${TILE_GUTTER}px, grid-template-columns: repeat(2, 1fr);}`, 0)
-
-	//define column layouts with @media queries
-	//set to change column layout at min of next possible number of cols
-	// for (let i = 3; i <= 4; i++) {
-	// 	styleSheet.insertRule(`@media screen and (min-width: ${minWidthFor(i)}px) {#project_grid{grid-template-columns: repeat(${i}, 1fr);}}`, styleSheet.cssRules.length)
-	// }
-
+	return styleSheet
 }
 
 function minWidthFor(columns) {
