@@ -9,7 +9,7 @@ const TILE_GUTTER = 10
 const GRID_MARGIN = 50
 
 //gets project data from json file
-fetch('project_data.json')
+fetch('dynamic_data.json')
   .then(function(response) {
     return response.json()
   })
@@ -97,7 +97,6 @@ function setUpCSSRules() {
 	let styleSheet = getStyleSheet()
 
 	//define width of outer container
-	styleSheet.insertRule(`#outer_container{width: 80vw;}`, 0)
 	styleSheet.insertRule(`@media screen and (min-width: ${minWidthFor(5)}px) {#outer_container{width: ${minWidthFor(5) - GRID_MARGIN * 2}px;}}`, styleSheet.cssRules.length)
 
 	//define general properties of grid
@@ -155,12 +154,24 @@ function processJson(jsonObj) {
 		project.id = index
 		index++
 
+		//create link element
+		let projectLink = document.createElement("a")
+		projectLink.classList.add("project_link")
+		projectLink.setAttribute("href", project.page_link)
+		outerDiv.appendChild(projectLink)
+
 		//add p of class tag for each tag
 		let tagDiv = document.createElement("div")
 		tagDiv.classList.add("tag_container") 
 		project.tags.forEach(function(tag) {
 			tagDiv.appendChild(createHighlightedText("tag", tag))
 		})
+
+		//add image
+		if (project.image !== undefined) {
+			outerDiv.style.setProperty("background-image", `url(project_images/${project.image})`)
+		}
+
 		outerDiv.appendChild(tagDiv)
 
 		//add p of type project_title for title

@@ -1,0 +1,45 @@
+ :root {
+  --accent_color: #0096EA;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Source Code Pro', monospace;
+}
+
+.tag_container {
+	display: flex;	
+	flex-wrap: wrap;
+}
+
+.tag_container > * {
+	margin-right: 10px;
+	margin-bottom: 5px;
+}
+
+.highlighted {
+	background-color: var(--accent_color) 
+}
+
+#footer {
+	font-size: 0.75em;
+	width: 100%;
+	text-align: center;
+	padding-bottom: 10px;
+}
+
+/* link formatting */
+.ext_link {
+	color: black;
+	text-decoration: none;
+	border-bottom: 1px solid var(--accent_color);
+
+	background-image: linear-gradient(to right, transparent 50%, var(--accent_color) 50%);
+	background-size: 200%; 
+}
+
+.ext_link:hover {
+	background-position: -100%;
+	transition: background-position .5s;
+}
