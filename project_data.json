@@ -1,7 +1,7 @@
 [
  {
     "title": "Seifert Surface Generator",
-    "image": "seifert_surfaces.png",
+    "image": "seifert_surfaces.jpg",
     "body": [
         {
             "type": "p",
@@ -9,7 +9,7 @@
         },
         {
             "type": "img",
-            "content": "seifert_img_1.png"
+            "content": "seifert_img_1.jpg"
         },
         {
             "type": "p",
@@ -17,7 +17,7 @@
         },
         {
             "type": "img",
-            "content": "seifert_img_2.png"
+            "content": "seifert_img_2.jpg"
         },
         {
             "type": "p",
@@ -35,7 +35,7 @@
  }, 
  {
     "title": "App for WICC",
-    "image": "wicc_app.png",
+    "image": "wicc_app.jpg",
     "tags": [
       "Swift", "Xcode", "Google OAuth"
     ],
@@ -63,7 +63,7 @@
  },
  {
     "title": "LED Matrix",
-    "image": "led_matrix.png",
+    "image": "led_matrix.jpg",
     "tags": [
       "Arduino", "Wi-Fi", "UDP"
     ],
@@ -82,7 +82,7 @@
         },
         {
             "type": "img",
-            "content": "led_img.png"
+            "content": "led_img.jpg"
         }
     ],
     "height": 1,
