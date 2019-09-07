@@ -53,7 +53,7 @@ for project in data:
 		else:
 			pageTitle.append(char)
 
-	relLink = f'project_pages/{"".join(pageTitle)}.html'
+	relLink = f'projects/{"".join(pageTitle)}.html'
 	project["page_link"] = relLink
 
 	newPage = open(relLink, 'w')

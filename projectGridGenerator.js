@@ -1,6 +1,7 @@
 //data storage
 let projectData = null
 let curCols = null
+let cachedNoOdd = null
 
 //layout constants
 const TILE_MAX_WIDTH = 250
@@ -54,10 +55,32 @@ function winResized() {
 }
 
 
-//calculates number of columns needed based on the size of the window
+//calculates number of columns needed based on the size of the window and whether data will fit in odd number of cols
 function numCols() {
 	let width = window.innerWidth
 	let cols = Math.floor((width - (2 * GRID_MARGIN + TILE_GUTTER)) / (TILE_MIN_WIDTH + TILE_GUTTER))
+	
+	//if columns is an odd number and all projects are even number width, they're never going to fit in that many columns
+	if (cols % 2 !== 0) {
+		if (cachedNoOdd === null) {
+
+			let foundOdd = false
+
+			projectData.forEach(function(project){
+				if (project.width % 2 !== 0) {
+					foundOdd = true
+				}
+			})
+
+			cachedNoOdd = !foundOdd
+		}
+
+		if (cachedNoOdd) {
+			cols -= 1
+		}
+		
+	}
+
 	return Math.max(2, Math.min(4,  cols))
 }
 
@@ -77,7 +100,6 @@ function resetGridStyle(rows, cols) {
 	if (cols == 4) {
 		let styleSheet = getStyleSheet()
 		let curBlockWidth = (5 * TILE_MIN_WIDTH + TILE_GUTTER) / 4
-		console.log(curBlockWidth)
 		styleSheet.insertRule(`@media screen and (min-width: ${minWidthFor(5)}px) {#project_grid{height: ${curBlockWidth * rows + TILE_GUTTER * (rows - 1)}px !important;}}`, styleSheet.cssRules.length)
 	}
 	

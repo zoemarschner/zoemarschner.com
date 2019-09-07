@@ -13,7 +13,7 @@
         },
         {
             "type": "p",
-            "content": "The Seifert Surface of a knot K is a surface that has a boundary equal to K. This program uses Seifert’s algorithm to construct a representation of the surface in .obj file format, and also includes the necessary code to view this file using OpenGL in Python."
+            "content": "The Seifert Surface of a knot K is a surface that has a boundary equal to K. This program uses Seifert’s algorithm to construct a representation of the surface in .obj file format and also includes the necessary code to view this file using OpenGL in Python."
         },
         {
             "type": "img",
@@ -50,7 +50,7 @@
         },
         {
             "type": "p",
-            "content": "Features of the app include a central calendar connected to multiple Google Calendars the organization operates, customizable notifications and filters, and Google Sign in with OAuth to display additional material for executive board members."
+            "content": "Features of the app include a central calendar connected to multiple Google Calendars the organization operates, customizable notifications and filters, and Google Sign-in with OAuth to display additional material for executive board members."
         },
         {
             "type": "img",
@@ -78,7 +78,7 @@
         },
         {
             "type": "p",
-            "content": "I’m currently working on providing Wi-Fi connectivity for this project with an ESP8266 module and code I’ve written in the Arduino programming language that sends AT commands over Serial to the Wi-Fi Module and uses UDP to obtain data from the internet."
+            "content": "In order to use the matrix as a clock display, I’m currently working on providing Wi-Fi connectivity for this project. I’m doing this using an ESP8266 module and code I’ve written in the Arduino programming language that sends AT commands over Serial to the Wi-Fi Module and uses UDP to obtain time data from an NTP server."
         },
         {
             "type": "img",
