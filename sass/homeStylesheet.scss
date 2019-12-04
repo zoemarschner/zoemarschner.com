@@ -1,13 +1,19 @@
+$TILE_MAX_WIDTH: 250;
+$TILE_MIN_WIDTH: 200;
+$TILE_GUTTER: 10;
+$GRID_MARGIN: 50;
+
+@function minWidthFor($columns) {
+	@return $TILE_MIN_WIDTH * $columns + $TILE_GUTTER * ($columns - 1) + $GRID_MARGIN * 2;
+}
+
 /* grid formatting */
 
 #project_grid {
 	display: grid;
 	grid-gap: 10px;
-	/*
-	grid-template-columns: repeat(4, 25%);
-	grid-template-rows: repeat(3, 150px);
-	grid-gap: 5px;
-	*/
+	grid-gap: $TILE_GUTTER * 1px;
+	grid-template-columns: repeat(2, 1fr);
 }
 
 .project_container {
@@ -63,6 +69,13 @@
 	top: 0;
 	left: 0;
 	z-index: 1;
+}
+
+
+@media screen and (min-width: minWidthFor(5) * 1px) {
+	#outer_container{
+		width: (minWidthFor(5) - $GRID_MARGIN * 2) * 1px;
+	}
 }
 
 

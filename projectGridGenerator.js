@@ -21,7 +21,6 @@ fetch('dynamic_data.json')
 
 //add resize listener
 window.addEventListener("resize", winResized)
-window.addEventListener("load", setUpCSSRules)
 
 //------- CODE FOR LAYING OUT ELEMNTS IN PAGE ------- 
 
@@ -100,7 +99,7 @@ function resetGridStyle(rows, cols) {
 	if (cols == 4) {
 		let styleSheet = getStyleSheet()
 		let curBlockWidth = (5 * TILE_MIN_WIDTH + TILE_GUTTER) / 4
-		styleSheet.insertRule(`@media screen and (min-width: ${minWidthFor(5)}px) {#project_grid{height: ${curBlockWidth * rows + TILE_GUTTER * (rows - 1)}px !important;}}`, styleSheet.cssRules.length)
+		styleSheet.insertRule(`@media screen and (min-width: ${minWidthFor(5)}px) {#project_grid{height: ${curBlockWidth * rows + TILE_GUTTER * (rows - 1)}px !important;}}`, styleSheet.cssRules.length - 2)
 	}
 	
 }
@@ -110,20 +109,6 @@ function resetGridStyle(rows, cols) {
 function updateElementStyle(project, element) {
 	element.style.gridColumn = `${project.position.col + 1} / span ${project.width}`
 	element.style.gridRow = `${project.position.row + 1} / span ${project.height}`
-
-}
-
-//sets up css rules that won't change throughout course of program
-//doing this in JS so that we can use constants that can change between runs
-function setUpCSSRules() {
-	let styleSheet = getStyleSheet()
-
-	//define width of outer container
-	styleSheet.insertRule(`@media screen and (min-width: ${minWidthFor(5)}px) {#outer_container{width: ${minWidthFor(5) - GRID_MARGIN * 2}px;}}`, styleSheet.cssRules.length)
-
-	//define general properties of grid
-	//default is 2 columns, since we are using greater than for media queries
-	styleSheet.insertRule(`#project_grid {grid-gap: ${TILE_GUTTER}px, grid-template-columns: repeat(2, 1fr);}`, 0)
 
 }
 
