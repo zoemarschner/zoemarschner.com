@@ -13,14 +13,16 @@ h1 {
 }
 
 h2 {
-	font-weight: 700;
+	font-weight: 600;
 	font-family: 'Source Code Pro', monospace;
 	margin-top: 30px;
 	margin-bottom: 10px;
 }
 
 p {
-	font-family: 'Work Sans', sans-serif;
+	font-family: 'Crimson Text', sans-serif;
+	font-size: 17px;
+	line-height: 120%;
 }
 
 .highlighted {

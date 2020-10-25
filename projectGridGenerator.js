@@ -171,7 +171,7 @@ function processJson(jsonObj) {
 		let tagDiv = document.createElement("div")
 		tagDiv.classList.add("tag_container") 
 		project.tags.forEach(function(tag) {
-			tagDiv.appendChild(createHighlightedText("tag", tag))
+			tagDiv.appendChild(createText("tag", tag))
 		})
 
 		//add image
@@ -196,6 +196,17 @@ function createHighlightedText(ofClass, text) {
 	pNode.classList.add(ofClass)
 	let spanNode = document.createElement("span")
 	spanNode.classList.add("highlighted")
+	pNode.appendChild(spanNode)
+	let textNode = document.createTextNode(text)
+	spanNode.appendChild(textNode)
+	return pNode
+}
+
+//create text node
+function createText(ofClass, text) {
+	let pNode = document.createElement("p")
+	pNode.classList.add(ofClass)
+	let spanNode = document.createElement("span")
 	pNode.appendChild(spanNode)
 	let textNode = document.createTextNode(text)
 	spanNode.appendChild(textNode)
