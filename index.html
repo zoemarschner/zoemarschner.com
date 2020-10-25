@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="public/stylesheets/generalStylesheet.css">
 	<script src="cube.js"></script>
 	<script src="projectGridGenerator.js"></script>
-	<link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@600;700&family=Work+Sans:wght@400;600&family=Crimson+Tex:wght@400;600&display=swap" rel="stylesheet">
 	<link rel="icon" href="favicon.png" sizes="32x32">
 </head>
 <body>
@@ -16,16 +16,36 @@
 	<h1 id="name"> 
 		<svg id="cube" height="30" width="30">
  		 	<path id="cube_path" stroke-width="1" fill="none"/>
-		</svg> Zoë Marschner
+		</svg>Zoë Marschner
 	</h1> 
-	<p id="intro_text"> Hi! I'm a freshman at MIT studying Computer Science and Math.  <br>
-		Get in touch with me at <a href="mailto:zoem@mit.edu" class="ext_link">zoem@mit.edu</a> or visit my <a href="https://github.com/zoemarschner/" class="ext_link">GitHub</a>. <br>
-		Here are some of my personal projects:
+	<p id="about"> Hello! I'm a Sophomore at MIT majoring in Computer Science and Math (Courses 6-3 & 18). I've been doing research  since January 2020 in the <a href="http://groups.csail.mit.edu/gdpgroup/index.html" class="ext_link">Geometric Data Processing Group</a>.<br><br>
+		You can get in touch with me at <a href="mailto:zoem@mit.edu" class="ext_link">zoem@mit.edu</a> or visit my <a href="https://github.com/zoemarschner/" class="ext_link">GitHub</a>. <br>
 	</p>
+	<h2 id="reserach">Research</h2>
+
+	<div class="research-container">
+		<div class="research-image"></div>
+		<div class="research-info">	
+			<p class="research-title">Hexahedral Mesh Repair via Sum-of-Squares Relaxation</p>
+			<p>Zoë Marschner, David Palmer, Paul Zhang, Justin Solomon</br>
+				<i>Symposium on Geometry Processing</i>, 2020</p>
+			<div class="links">
+				<a href="http://people.csail.mit.edu/jsolomon/assets/sos_hex.pdf">PDF</a> <a href="https://github.com/zoemarschner/SOS-hex">Code</a> <a href="https://www.youtube.com/watch?v=xEMRLEEbGGc">Video</a>
+			</div>
+		</div>
+		
+	</div>
+
+	<h2 id="projects">Projects</h2>
+
 	<div id = project_grid></div>
 	<p id="footer">
-		Designed and <a href="https://github.com/zoemarschner/zoemarschner.com" class="ext_link">coded</a> by Zoë Marschner © 2019
+		Designed and <a href="https://github.com/zoemarschner/zoemarschner.com" class="ext_link">coded</a> by Zoë Marschner © 2020
 	</p>
+
+	<div id="nav-bar"> 
+		<h2><a href="#about">About</a> / <a href="#reserach">Research</a> / <a href="#projects">Projects</a></h2>
+	</div>
 </div>
 </body>
 </html>
