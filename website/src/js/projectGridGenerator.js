@@ -9,18 +9,22 @@ const TILE_MIN_WIDTH = 200
 const TILE_GUTTER = 10
 const GRID_MARGIN = 50
 
-//gets project data from json file
-fetch('dynamic_data.json')
-  .then(function(response) {
-    return response.json()
-  })
-  .then(function(json) {
-  	projectData = json
-  	processJson(json)
-  });
+window.addEventListener('load', function() {
+	//gets project data from json file
+	fetch('data/dynamic_data.json')
+	  .then(function(response) {
+	    return response.json()
+	  })
+	  .then(function(json) {
+	  	projectData = json
+	  	processJson(json)
+	  });
 
-//add resize listener
-window.addEventListener("resize", winResized)
+	//add resize listener
+	window.addEventListener("resize", winResized)
+});
+
+
 
 //------- CODE FOR LAYING OUT ELEMNTS IN PAGE ------- 
 
@@ -176,7 +180,7 @@ function processJson(jsonObj) {
 
 		//add image
 		if (project.image !== undefined) {
-			outerDiv.style.setProperty("background-image", `url(project_images/${project.image})`)
+			outerDiv.style.setProperty("background-image", `url(public/img/project_images/${project.image})`)
 		}
 
 		outerDiv.appendChild(tagDiv)

@@ -1,2 +1,4 @@
+cd website/src/py
 python3 staticPageGenerator.py
-sass sass/homeStylesheet.scss:public/stylesheets/homeStylesheet.css
+cd ../../..
+echo "Finished running python files."
