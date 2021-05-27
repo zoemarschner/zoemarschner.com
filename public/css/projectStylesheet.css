@@ -1,0 +1,55 @@
+#text_container {
+	padding-top: 1.5em;
+	width: 80vw;
+	margin: auto;
+	padding-bottom: 1em;
+}
+
+#title {
+	padding-bottom: 0;
+}
+
+#text_container > * {
+	padding-bottom: 1.5em;
+}
+
+
+#text_container > img {
+	display: block;
+ 	margin-left: auto;
+ 	margin-right: auto;	
+ 	max-width: 80vw;
+ 	width: 500px;
+}
+
+#home_icon {
+	stroke: var(--accent_color);
+	stroke-width: 2.75;
+	fill: none;
+	width: 24px;
+	height: 24px;
+	align-self: center;
+	padding-bottom: 1.5em;
+}
+
+#heading {
+	display: flex;
+	flex-direction: column;
+	justify-content: left;
+	padding-bottom: 1.5em;
+}
+
+#home_link_box {
+	text-align: center;
+}
+
+#git_message {
+	font-size: 0.75em;
+}
+
+#title_box {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}

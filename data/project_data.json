@@ -1,0 +1,92 @@
+[
+ {
+    "title": "Seifert Surface Generator",
+    "image": "seifert_surfaces.jpg",
+    "body": [
+        {
+            "type": "p",
+            "content": "As part of a group project for Ithaca High School/Cornell University math seminar, I created a program in Python which takes a graphical representation of a knot and computes the Seifert Surface, genus, and Alexander Polynomial of the knot."
+        },
+        {
+            "type": "img",
+            "content": "seifert_img_1.jpg"
+        },
+        {
+            "type": "p",
+            "content": "The Seifert Surface of a knot K is a surface that has a boundary equal to K. This program uses Seifert’s algorithm to construct a representation of the surface in .obj file format and also includes the necessary code to view this file using OpenGL in Python."
+        },
+        {
+            "type": "img",
+            "content": "seifert_img_2.jpg"
+        },
+        {
+            "type": "p",
+            "content": "Alexander’s Polynomial is calculated using the original algorithm proposed in <a href=\"http://www.ams.org/journals/tran/1928-030-02/S0002-9947-1928-1501429-1/S0002-9947-1928-1501429-1.pdf\" class=\"ext_link\">Alexander’s 1928 paper</a>, and upper and lower bounds for the genus of the knot are calculated from the Seifert Surface and Alexander Polynomial."
+        }
+
+    ],
+    "git_link": "https://github.com/zoemarschner/math-seminar",
+    "tags": [
+      "Python", "OpenGL"
+    ],
+    "height": 2,
+    "width": 2,
+    "priority": 6
+ }, 
+ {
+    "title": "App for WICC",
+    "image": "wicc_app.jpg",
+    "tags": [
+      "Swift", "Xcode", "Google OAuth"
+    ],
+    "body": [
+        {
+            "type": "p",
+            "content": "Over two summers during high school, I worked on completely designing and developing an iOS app, written in XCode and Swift, for the organization <a href=\"https://wicc.cornell.edu/\" class=\"ext_link\">Women in Computing at Cornell</a> (I’m currently working with WICC to finalize and deploy the app). WICC is an organization in my hometown that works on supporting women in CS throughout the community."
+        },
+        {
+            "type": "img",
+            "content": "wicc_img.jpg"
+        },
+        {
+            "type": "p",
+            "content": "Features of the app include a central calendar connected to multiple Google Calendars the organization operates, customizable notifications and filters, and Google Sign-in with OAuth to display additional material for executive board members."
+        },
+        {
+            "type": "img",
+            "content": "wicc_gif.gif"
+        }
+    ],
+    "height": 1,
+    "width": 2,
+    "priority": 5
+ },
+ {
+    "title": "LED Matrix",
+    "image": "led_matrix.jpg",
+    "tags": [
+      "Arduino", "Wi-Fi", "UDP"
+    ],
+    "body": [
+        {
+            "type": "p",
+            "content": "This past summer I taught myself about electrical engineering by creating an LED matrix from basic components. The hardware consists of an 11 by 11 grid of LEDs, an Arduino micro, and two SIPO shift registers. The software is written in the Arduino programming language, and uses multiplexing in conjunction with the shift registers in order to control the entire matrix from 14 pins of the Arduino."
+        },
+        {
+            "type": "img",
+            "content": "led_gif.gif"
+        },
+        {
+            "type": "p",
+            "content": "In order to use the matrix as a clock display, I’m currently working on providing Wi-Fi connectivity for this project. I’m doing this using an ESP8266 module and code I’ve written in the Arduino programming language that sends AT commands over Serial to the Wi-Fi Module and uses UDP to obtain time data from an NTP server."
+        },
+        {
+            "type": "img",
+            "content": "led_img.png"
+        }
+    ],
+    "height": 1,
+    "width": 2,
+    "priority": 3
+ }
+]
