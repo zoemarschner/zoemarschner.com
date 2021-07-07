@@ -2,5 +2,6 @@
   "authors": ["Zoë Marschner", "David Palmer", "Paul Zhang", "Justin Solomon"],
   "conference": "Symposium on Geometry Processing",
   "year": 2020,
-  "image": ""}
-]
+  "image": "sos_hex.png",
+  "links": {"PDF": "http://people.csail.mit.edu/jsolomon/assets/sos_hex.pdf", "Code": "https://github.com/zoemarschner/SOS-hex", "Video": "https://www.youtube.com/watch?v=xEMRLEEbGGc"}
+}]
