@@ -138,14 +138,14 @@ $GRID_MARGIN: 50;
 
 .research-image {
 	background-image: url("../img/project_images/sos_hex.png");
-	height: 20vw;
-	width: 20vw;
+	height: 15vw;
+	width: 15vw;
 	background-size: cover;
 	border-radius: 15px;
 }
 
 .research-info {
-	width: 70%;
+	width: 62vw;
 }
 
 .research-container {
@@ -155,7 +155,13 @@ $GRID_MARGIN: 50;
 	flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: space-between;
+	padding-bottom: 30px;
 }
+
+.research-container:last-child {
+	padding-bottom: 0px;
+}
+
 .research-title {
 	font-size: 20px;
     line-height: 90%;
@@ -174,6 +180,11 @@ $GRID_MARGIN: 50;
     color: white;
     border-radius: 50px;
     padding: 2px 9px;
+}
+
+#research-list {
+	// display: flex;
+	// flex-direction: column;
 }
 
 
@@ -203,14 +214,23 @@ $GRID_MARGIN: 50;
 		margin-top: 20px;
 	}
 	.research-image {
-		height: 80vw;
-		width: 80vw;
+		height: 40vw;
+		width: 40vw;
 	}
 }
 
 @media screen and (min-width: minWidthFor(5) * 1px) {
 	#outer_container{
 		width: (minWidthFor(5) - $GRID_MARGIN * 2) * 1px;
+	}
+
+	.research-info {
+		width: (minWidthFor(5) - $GRID_MARGIN * 2) * 0.775 * 1px;
+	}
+
+	.research-image {
+		width: (minWidthFor(5) - $GRID_MARGIN * 2) * 0.1875 * 1px;
+		height: (minWidthFor(5) - $GRID_MARGIN * 2) * 0.1875 * 1px;
 	}
 }
 
