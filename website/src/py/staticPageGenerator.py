@@ -10,7 +10,7 @@ def replaceString(template, replacement, string):
 	return string[:ind] + replacement + string[ind + len(template):]
 
 # load json file
-with open('project_data.json') as json_file:
+with open('../../data/project_data.json') as json_file:
 	json_data = json_file.read()
 
 data = json.loads(json_data)
@@ -41,7 +41,7 @@ for project in data:
 		if component["type"] == "p":
 			bodyString += f'<p>{component["content"]}</p>'
 		elif component["type"] == "img":
-			bodyString += f'<img src="../project_images/{component["content"]}">'
+			bodyString += f'<img src="../public/img/project_images/{component["content"]}">'
 
 	thisTemplate = replaceString("$BODY", bodyString, thisTemplate)
 	
@@ -53,7 +53,7 @@ for project in data:
 		else:
 			pageTitle.append(char)
 
-	relLink = f'projects/{"".join(pageTitle)}.html'
+	relLink = f'../../projects/{"".join(pageTitle)}.html'
 	project["page_link"] = relLink
 
 	newPage = open(relLink, 'w')
@@ -65,6 +65,6 @@ for project in data:
 
 dynamicJsonData = json.dumps(data)
 
-jsonFile = open("dynamic_data.json", "w")
+jsonFile = open("../../data/dynamic_data.json", "w")
 jsonFile.write(dynamicJsonData)
 jsonFile.close()

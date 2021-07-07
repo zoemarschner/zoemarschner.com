@@ -12,10 +12,9 @@ const planeCenter = [0.338203829097, 0.338203829097, 0]
 
 let length = 0
 
-window.onload = function init() {
+window.addEventListener('load', function init() {
 	window.requestAnimationFrame(updateSvg)
-
-}
+});
 
 function updateSvg() {
 

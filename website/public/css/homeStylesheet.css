@@ -93,7 +93,7 @@
 
 /* research formatting */
 .research-image {
-  background-image: url("/project_images/sos_hex.png");
+  background-image: url("../img/project_images/sos_hex.png");
   height: 20vw;
   width: 20vw;
   background-size: cover;

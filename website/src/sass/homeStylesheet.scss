@@ -137,7 +137,7 @@ $GRID_MARGIN: 50;
 /* research formatting */
 
 .research-image {
-	background-image: url("/project_images/sos_hex.png");
+	background-image: url("../img/project_images/sos_hex.png");
 	height: 20vw;
 	width: 20vw;
 	background-size: cover;
@@ -149,7 +149,7 @@ $GRID_MARGIN: 50;
 }
 
 .research-container {
-	width: 100%;
+	width: 100%; 
 	display: flex;
 	// flex-grow: 1;
 	flex-direction: row;
