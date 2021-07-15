@@ -12,7 +12,6 @@ window.addEventListener('load', function() {
 
 function processResearchJson(jsonObj) {
 	let container = document.getElementById("research-list");
-	console.log(jsonObj)
 
 	jsonObj.forEach(function(paper) {
 		let outerDiv = document.createElement("div");
@@ -31,7 +30,6 @@ function processResearchJson(jsonObj) {
 		title.innerHTML = paper.title;
 		info.appendChild(title);
 
-		console.log(paper.authors)
 		let pubinfo = document.createElement("p");
 		pubinfo.innerHTML = `${paper.authors.join(", ")}</br> <i>${paper.conference}</i>, ${paper.year}`
 		info.appendChild(pubinfo);
