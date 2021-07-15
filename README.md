@@ -18,7 +18,6 @@ In order to deploy through github pages, a new branch with the `website` subdire
 
 ```
 git subtree push --prefix website  origin gh-pages
-
 ```
 
 If the `subtree push` fails mysteriously, try deleting the local & remote `gh-pages` branch with 
