@@ -2,13 +2,22 @@ var gulp = require('gulp');
 var exec = require('child_process').exec;
 var browserSync = require('browser-sync').create();
 
-gulp.task('build_py', function(callback) {
-  exec('./build.sh', function (err, stdout, stderr) {
+gulp.task('date', function(callback) {
+  exec('cd website/src/py\npython3 staticPageGenerator.py\ncd ../../..', function (err, stdout, stderr) {
     console.log(stdout.slice(0, -1));
     if (stderr != 0) {console.log(stderr);}
     callback(err);
   });
 });
+
+gulp.task('build_page', function(callback) {
+  exec('cd website/src/py\npython3 staticPageGenerator.py\ncd ../../..', function (err, stdout, stderr) {
+    console.log(stdout.slice(0, -1));
+    if (stderr != 0) {console.log(stderr);}
+    callback(err);
+  });
+});
+
 
 gulp.task('server', function() {
   browserSync.init({
@@ -31,10 +40,13 @@ gulp.task('sass', function(callback) {
 
 gulp.task('watch', function(callback) {
   gulp.watch('website/src/sass/*.scss', gulp.series('sass')); 
-  gulp.watch('website/src/py/*', gulp.series('build_py')); 
+  gulp.watch('website/src/py/*', gulp.series('build_page')); 
 
   callback();
 });
+
+gulp.task('build_py', gulp.series('date', 'build_page'));
+
 
 gulp.task('dev', gulp.series('watch', 'server'));
 gulp.task('build', gulp.series('build_py', 'sass'));

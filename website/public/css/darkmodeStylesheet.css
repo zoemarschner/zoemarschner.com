@@ -1,0 +1,8 @@
+:root { --accent_color: #ed7402; }
+
+*, a { color: white }
+
+body {
+	background-color: rgb(32, 33, 36);
+}
+

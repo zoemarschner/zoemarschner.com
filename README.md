@@ -14,10 +14,16 @@ Running `gulp build` will build python and sass files.
 
 ## Deployment
 
-In order to deploy through github pages, a new branch with the `webiste` subdirectory as its root must be created to do this, run the command
+In order to deploy through github pages, a new branch with the `website` subdirectory as its root must be created to do this, run the command
 
 ```
 git subtree push --prefix website  origin gh-pages
 
 ```
 
+If the `subtree push` fails mysteriously, try deleting the local & remote `gh-pages` branch with 
+```
+git push -d origin gh-pages
+git branch -d gh-pages
+``` 
+and then run the above command again. [This is probably not the best way to fix this...]
