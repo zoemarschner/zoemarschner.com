@@ -21,7 +21,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
 function update_darkmode(new_mode_dark) {
 	// !! this assumes that the darkmode stylesheet is always the second to last
-	console.log(document.styleSheets)
+	console.log(document.styleSheets[document.styleSheets.length - 2])
 	let stylesheet = document.styleSheets[document.styleSheets.length - 2];
 	stylesheet.disabled = !new_mode_dark; 
 }
