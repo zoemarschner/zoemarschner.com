@@ -138,6 +138,27 @@
   cursor: pointer;
 }
 
+#portrait {
+  width:  30%;
+  padding-right: 3vw;
+}
+
+#about_container {
+  display: flex;
+  align-items: flex-end;
+}
+
+#footer {
+  padding-top: 5vw;
+  margin-top: auto;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
 .project_link {
   position: absolute;
   height: 100%;
