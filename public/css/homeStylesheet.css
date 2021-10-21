@@ -93,11 +93,12 @@
 
 /* research formatting */
 .research-image {
-  background-image: url("../img/project_images/sos_hex.png");
   height: 15vw;
   width: 15vw;
   background-size: cover;
-  border-radius: 15px; }
+  border-radius: 15px; 
+  background-color: rgb(230, 230, 230);
+}
 
 .research-info {
   width: 62vw; }
@@ -134,9 +135,7 @@
 #cube {
   stroke: var(--accent_color);
   vertical-align: baseline;
-  margin-right: 20px; 
-  cursor: pointer;
-}
+  margin-right: 20px; }
 
 .project_link {
   position: absolute;

@@ -1,4 +1,10 @@
-[{"title": "Hexahedral Mesh Repair via Sum-of-Squares Relaxation",
+[{"title": "Sum-of-Squares Geometry Processing",
+  "authors": ["Zoë Marschner", "Paul Zhang", "David Palmer", "Justin Solomon"],
+  "conference": "SIGGRAPH Asia",
+  "year": 2021,
+  "image": "sosgp.png",
+  "links": {"PDF": "https://arxiv.org/pdf/2110.08451.pdf"}
+}, {"title": "Hexahedral Mesh Repair via Sum-of-Squares Relaxation",
   "authors": ["Zoë Marschner", "David Palmer", "Paul Zhang", "Justin Solomon"],
   "conference": "Symposium on Geometry Processing",
   "year": 2020,
