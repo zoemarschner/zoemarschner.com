@@ -10,6 +10,7 @@
 h1 {
 	font-weight: 700;
 	font-family: 'Source Code Pro', monospace;
+	font-size: 1.5em;
 }
 
 h2 {
@@ -46,10 +47,10 @@ a {
 	border-bottom: 1px solid var(--accent_color);
 
 	background-image: linear-gradient(to right, transparent 50%, var(--accent_color) 50%);
-	background-size: 200%; 
+	background-size: 210%; 
 }
 
 .ext_link:hover {
-	background-position: -100%;
+	background-position: -95%;
 	transition: background-position .5s;
 }

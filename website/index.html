@@ -8,7 +8,6 @@
 	<link rel="stylesheet" href="public/css/generalStylesheet.css">
 	<link rel="stylesheet" href="public/css/darkmodeStylesheet.css">
 	<script src="src/js/cube.js"></script>
-	<script src="src/js/projectGridGenerator.js"></script>
 	<script src="src/js/researchListBuilder.js"></script>
 	<script src="src/js/darkmode.js"></script>
 
@@ -16,29 +15,49 @@
 	<link rel="icon" href="favicon.png" sizes="32x32">
 </head>
 <body>
-<div id="outer_container"> 
-	<div id="about_container">
-		<img id="portrait" title="Killarney Provincial Park, Ontario, Canada" src="public/img/kilarney.jpg">
-		<div id="into_container">
+	<div id="sidebar">
+		<div id="sidebar-box">
+			<img id="portrait" title="Killarney Provincial Park, Ontario, Canada" src="public/img/kilarney.jpg"> 
 			<h1 id="name"> 
 				<svg id="cube" height="30" width="30">
 		 		 	<path id="cube_path" stroke-width="1" fill="none"/>
 				</svg>Zoë Marschner
 			</h1> 
-			<p id="about"> Hello! I'm a Junior at MIT majoring in Computer Science and Math (Courses 6-3 & 18) doing research in Geometry Processing. I've been working in the <a href="http://groups.csail.mit.edu/gdpgroup/index.html" class="ext_link">Geometric Data Processing Group</a> with Professor <a href="https://people.csail.mit.edu/jsolomon/" class = "ext_link"> Justin Solomon</a> since January 2020. During the Summer of 2021 I worked at the University of Toronto with Professor <a href="https://www.cs.toronto.edu/~jacobson/" class = "ext_link">Alec Jacobson</a> in the <a href="https://www.dgp.toronto.edu/" class="ext_link">Dynamic Graphics Project</a>.<br><br>
+			<div id="info">
+				<h2> Undergrad at Massachusetts Institute of Technology</h2>
 
-			In my spare time I like coding interesting things, <a href="https://www.peakbagger.com/climber/climber.aspx?cid=32367" class="ext_link">climbing mountains</a>, and reading. <br><br>
-				You can get in touch with me at <a href="mailto:zoem@mit.edu" class="ext_link">zoem@mit.edu</a> or visit my <a href="https://github.com/zoemarschner/" class="ext_link">GitHub</a>. <br>
-			</p>
+				<!-- inline svgs for icons. extracted from files in public/img/icons -->
+				<!-- <svg id="git"  viewBox="0 0 632.01 700">
+					<path class="cls-1" d="M225.67,676.93c0-18.34-.57-46.21-.57-84C111.84,613.81,82.53,565.35,73.52,540c-5.07-13-27-53-46.21-63.68C11.53,467.86-11,447,26.75,446.45c35.5-.57,60.85,32.68,69.31,46.21,40.57,68.18,105.37,49,131.3,37.19,3.94-29.3,15.77-49,28.74-60.3C155.79,458.28,51,419.4,51,247c0-49,17.47-89.6,46.2-121.15-4.5-11.27-20.28-57.48,4.51-119.47,0,0,37.76-11.83,124,46.21a425.14,425.14,0,0,1,225.4,0c86.22-58.6,124-46.21,124-46.21,24.79,62,9,108.2,4.5,119.47,28.74,31.55,46.21,71.56,46.21,121.15,0,173-105.38,211.32-205.68,222.59,16.34,14.09,30.43,41.14,30.43,83.4,0,60.3-.57,97.46-.57,124C429.94,698,248.47,696.52,225.67,676.93Z"/>
+				</svg> -->
+
+				<div id="email">
+					<svg id="mail" viewBox="0 0 766.08 700">
+						<rect class="st0" x="13.24" y="116.68" width="731.22" height="475.29" rx="29.84"/><path class="st0" d="M28.7,125.61,342.29,386.77a57.2,57.2,0,0,0,73.15,0L727.87,127.26"/><line class="st0" x1="31.72" y1="583.22" x2="281.52" y2="335.61"/><line class="st0" x1="725.4" y1="582.87" x2="475.87" y2="335.82"/>
+					</svg>	 
+					<h2> 
+						<a href="mailto:zoem@mit.edu" class="ext_link">zoem@mit.edu</a>
+					</h2>	
+				</div>
+				
+			</div>
 		</div>
 	</div>
 
-	<div id="nav-bar"> 
-		<h2><a href="#about">About</a> / <a href="#reserach">Research</a> / <a href="#projects">Fun</a></h2>
+	<div id="main">
+		<p id="about">  Hello! I'm a Junior at MIT majoring in Computer Science and Math (Courses 6-3 & 18) doing research in Geometry Processing. I've been working in the <a href="http://groups.csail.mit.edu/gdpgroup/index.html" class="ext_link">Geometric Data Processing Group</a> with Professor <a href="https://people.csail.mit.edu/jsolomon/" class = "ext_link"> Justin Solomon</a> since January 2020. During the Summer of 2021 I worked at the University of Toronto with Professor <a href="https://www.cs.toronto.edu/~jacobson/" class = "ext_link">Alec Jacobson</a> in the <a href="https://www.dgp.toronto.edu/" class="ext_link">Dynamic Graphics Project</a>.<br><br>
+
+			In my spare time I like cooking, <a href="/projects.html" class="ext_link">coding interesting things</a>, <a href="https://www.peakbagger.com/climber/climber.aspx?cid=32367" class="ext_link">climbing mountains</a>, and reading. <br><br>
+		You can get in touch with me at <a href="mailto:zoem@mit.edu" class="ext_link">zoem@mit.edu</a> or visit my <a href="https://github.com/zoemarschner/" class="ext_link">GitHub</a>. <br> 
+		</p>
+		
+		<h2 id="reserach">Research</h2>
+		<div id ="research-list">
+		</div>
 	</div>
-</div>
-<p id="footer">
-		Designed and <a href="https://github.com/zoemarschner/zoemarschner.com" class="ext_link">coded</a> by Zoë Marschner © July 2021
-</p>
+	
+	<p id="footer">
+			Designed and <a href="https://github.com/zoemarschner/zoemarschner.com" class="ext_link">coded</a> by Zoë Marschner / last updated December 2021
+	</p>
 </body>
 </html>

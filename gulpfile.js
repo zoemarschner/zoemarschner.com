@@ -36,6 +36,15 @@ gulp.task('sass', function(callback) {
     });
     callback(err);
   });
+
+  exec('sass website/src/sass/projectGridStylesheet.scss:website/public/css/projectGridStylesheet.css', function (err, stdout, stderr) {
+    // console.log(stdout);
+    // console.log(stderr);
+    browserSync.reload({
+      stream: true
+    });
+    callback(err);
+  });
 });
 
 gulp.task('watch', function(callback) {
