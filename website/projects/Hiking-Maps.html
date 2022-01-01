@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Hiking Maps</title>
+	<link rel="stylesheet" href="../public/css/projectStylesheet.css">
+	<link rel="stylesheet" href="../public/css/generalStylesheet.css">
+	<link rel="stylesheet" href="../public/css/navbarStylesheet.css">
+	<link rel="stylesheet" href="../public/css/darkmodeStylesheet.css">
+	<script src="../src/js/cube.js"></script>
+	<script src="../src/js/darkmode.js"></script>
+	<link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital@0;1&family=Source+Code+Pro:wght@600;700&display=swap" rel="stylesheet">
+	<link rel="icon" href="../favicon.png" sizes="32x32">
+</head>
+<body>
+
+<div id="outer_container">
+	<svg id="cube" height="30" width="30">
+		 <path id="cube_path" stroke-width="1" fill="none"/>
+	</svg>
+	<!-- <h1 id="projects">Hiking Maps</h1> -->
+	<div id="title_box">
+		<h1 id="title">Hiking Maps</h1>
+		<p id="git_message">View on <a href=https://github.com/zoemarschner/hiking-maps class="ext_link">GitHub</a></p>
+	</div>
+	<p>Whenever I go hiking, I usually print out maps from online before leaving, but it’s often a pain to find high quality maps at the correct scale. I wrote a program which makes topographic maps cropped to show given GPS tracks. This required first creating a properly scaled map, and then  adding an additional vector layer of info on top of the map. My map was inspired stylistically by the design of the <a href="ngmdb.usgs.gov/topoview/viewer" class="ext_link">USGS quads</a>.</p><img src="../public/img/project_images/hiking_usgs_quad.png"><p class="caption">A portion of the USGS quad that includes Mt. Greylock, the highest point in Massachusetts.</p><p>I built the base maps by downloading Open Street Map tiles. OSM has a standard convention for naming tiles (<a href="https://wiki.openstreetmap.org/wiki/Slippy_map_tilenames" class="ext_link">“slippy map” names</a>), which allows different styles of tile to be used by simply interchanging the url for the tile server. I ended up using a custom map style created in <a href="https://www.mapbox.com" class="ext_link">Mapbox</a>, which let me emulate the classic topographic map look seen in the USGS quads.</p><img src="../public/img/project_images/hiking_osm_example.png"><p class="caption">An example map I created using my tiles, showing Ishaptina Ridge, the highest point of Ontario.</p><p>In order to scale the maps correctly, I calculated the region of the map given the extent of the GPS track for the hike and the desired aspect ratio, downloaded all the tiles that comprised that region, and then cropped them to the correct size. In order to draw the route and scale, I used a python package called reportlab, which includes nice features for generating and editing PDF documents.</p><img src="../public/img/project_images/hiking_ishpatina_map.png"><p class="caption">The final map for one day of my canoe camping trip to the summit of Ishpatina Ridge.</p><p>I ended up using this program first to generate maps for my canoe camping trips to the French River and Ishpatina Ridge during my summer in Ontario in 2021!</p><div class="gallery"><div style="flex: 1.3331164606376058"><img src="../public/img/project_images/hiking_inuse_1.jpeg"></div><div style="flex: 0.7474690663667042"><img src="../public/img/project_images/hiking_inuse_2.JPG"></div></div><p class="gallery-caption">Laminating the maps proved an essential addition when using them for canoeing.</p>
+</div>
+
+<p id="footer">
+		Designed and <a href="https://github.com/zoemarschner/personal_website" class="ext_link">coded</a> by Zoë Marschner / last updated December 2021</p>
+
+		<div id="nav-bar"> 
+		<h2> <a href="/" id="home_link"> <svg id="home_icon" viewbox="0 0 50 45">
+				<polyline class="st0" points="49,26.12 25,2.98 1,26.12 "/>
+				<path class="st0" d="M7.96,19.61v22.25h10.59c0-11.61,2.96-15.74,6.61-15.74s6.61,4.13,6.61,15.74h10.28V19.61"/>
+			</svg> 
+			Home</a>
+		</h2>
+		<h2>/</h2>
+		<h2><a href="/projects.html">  Projects </a></h2>
+		<h2>/</h2>
+		<h2>Hiking Maps</h2>
+	</div>
+</body>
+</html>

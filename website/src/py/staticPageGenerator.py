@@ -7,7 +7,18 @@ import json
 # returns str resulting of replacing first instance of template in string with replacement
 def replaceString(template, replacement, string):
 	ind = string.find(template)
-	return string[:ind] + replacement + string[ind + len(template):]
+	while ind != -1:
+		string = string[:ind] + replacement + string[ind + len(template):]
+		ind = string.find(template)
+	return string
+
+# we need PIL to get aspect ratio of images for the gallery view
+from PIL import Image 
+
+def get_aspect_ratio(img_string):
+	file = f'../../public/img/project_images/{img_string}'
+	with Image.open(file) as im:
+	    return im.width/im.height
 
 # load json file
 with open('../../data/project_data.json') as json_file:
@@ -35,13 +46,30 @@ for project in data:
 		
 
 
-	#go through body content and add
+	# go through body content and add
+	# note that captions can either be added as part of img or their own block
 	bodyString = ""
 	for component in project["body"]:
 		if component["type"] == "p":
 			bodyString += f'<p>{component["content"]}</p>'
 		elif component["type"] == "img":
 			bodyString += f'<img src="../public/img/project_images/{component["content"]}">'
+			if "caption" in component and component["caption"] != None:
+				bodyString += f'<p class="caption">{component["caption"]}</p>'
+		elif component["type"] == "caption":
+			bodyString += f'<p class="caption">{component["content"]}</p>'
+		elif component["type"] == "img_gallery":
+			bodyString += '<div class="gallery">'
+			for img in component['content']:
+				# laying out images the way I want is a huge pain, and needs the aspect ratio.
+				aspect = get_aspect_ratio(img)
+				bodyString += f'<div style="flex: {aspect}">'
+				bodyString += f'<img src="../public/img/project_images/{img}">'
+				bodyString += "</div>"
+			bodyString += '</div>'
+			if "caption" in component and component["caption"] != None:
+				bodyString += f'<p class="gallery-caption">{component["caption"]}</p>'
+
 
 	thisTemplate = replaceString("$BODY", bodyString, thisTemplate)
 	

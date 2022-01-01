@@ -50,6 +50,7 @@ gulp.task('sass', function(callback) {
 gulp.task('watch', function(callback) {
   gulp.watch('website/src/sass/*.scss', gulp.series('sass')); 
   gulp.watch('website/src/py/*', gulp.series('build_page')); 
+  gulp.watch('website/data/p*', gulp.series('build_page')); 
 
   callback();
 });

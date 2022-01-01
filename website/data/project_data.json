@@ -13,7 +13,7 @@
         },
         {
             "type": "p",
-            "content": "The Seifert Surface of a knot K is a surface that has a boundary equal to K. This program uses Seifert’s algorithm to construct a representation of the surface in .obj file format and also includes the necessary code to view this file using OpenGL in Python."
+            "content": "The Seifert Surface of a knot K is a surface that has a boundary equal to K. They're often thought about as the surface that would be formed if the knot was dipped in soap film. This program uses Seifert’s original algorithm to construct a representation of the surface in .obj file format. Seifert surfaces are important since they allow many knot invariants to be calculated. Using values already computed while creating the surface, we can easily compute an upper bound on the genus of the knot, which is defined as the minimal genus over all Seifert surfaces of the knot and is a knot invariant."
         },
         {
             "type": "img",
@@ -21,7 +21,7 @@
         },
         {
             "type": "p",
-            "content": "Alexander’s Polynomial is calculated using the original algorithm proposed in <a href=\"http://www.ams.org/journals/tran/1928-030-02/S0002-9947-1928-1501429-1/S0002-9947-1928-1501429-1.pdf\" class=\"ext_link\">Alexander’s 1928 paper</a>, and upper and lower bounds for the genus of the knot are calculated from the Seifert Surface and Alexander Polynomial."
+            "content": "By computing a differnt knot invariant, Alexander’s Polynomial, we can also compute a lower bound for the genus of the knot. I calculated Alexander's Polynomial by implementing the original algorithm proposed in <a href=\"http://www.ams.org/journals/tran/1928-030-02/S0002-9947-1928-1501429-1/S0002-9947-1928-1501429-1.pdf\" class=\"ext_link\">Alexander’s 1928 paper</a>. With this addition, the program can compute both upper and lower bounds for the genus of the knot, which often co-inside, giving us an exact genus."
         }
 
     ],
@@ -37,12 +37,12 @@
     "title": "App for WICC",
     "image": "wicc_app.jpg",
     "tags": [
-      "Swift", "Xcode", "Google OAuth"
+      "Swift", "Xcode", "iOS"
     ],
     "body": [
         {
             "type": "p",
-            "content": "Over two summers during high school, I worked on completely designing and developing an iOS app, written in XCode and Swift, for the organization <a href=\"https://wicc.cornell.edu/\" class=\"ext_link\">Women in Computing at Cornell</a> (I’m currently working with WICC to finalize and deploy the app). WICC is an organization in my hometown that works on supporting women in CS throughout the community."
+            "content": "Over two summers during high school, I worked on completely designing and developing an iOS app, written in XCode and Swift, for the organization <a href=\"https://wicc.cornell.edu/\" class=\"ext_link\">Women in Computing at Cornell</a>, an organization in my hometown that works on supporting women in CS throughout the community."
         },
         {
             "type": "img",
@@ -50,7 +50,7 @@
         },
         {
             "type": "p",
-            "content": "Features of the app include a central calendar connected to multiple Google Calendars the organization operates, customizable notifications and filters, and Google Sign-in with OAuth to display additional material for executive board members."
+            "content": "Features of the app include a central calendar displaying events from multiple Google Calendars the organization operates, customizable push notifications and filters, and Google Sign-in with OAuth to display additional material for executive board members."
         },
         {
             "type": "img",
@@ -65,12 +65,12 @@
     "title": "LED Matrix",
     "image": "led_matrix.jpg",
     "tags": [
-      "Arduino", "Wi-Fi", "UDP"
+      "Arduino", "Wi-Fi", "Networking"
     ],
     "body": [
         {
             "type": "p",
-            "content": "This past summer I taught myself about electrical engineering by creating an LED matrix from basic components. The hardware consists of an 11 by 11 grid of LEDs, an Arduino micro, and two SIPO shift registers. The software is written in the Arduino programming language, and uses multiplexing in conjunction with the shift registers in order to control the entire matrix from 14 pins of the Arduino."
+            "content": "The summer of 2019 I taught myself about electrical engineering by creating an LED matrix from basic components. One of the main motivations for this project was to create something functional starting with a set of basic pieces, as a way to learn about more complicated parts of EE gradually and naturally. I ended up creating an 11 by 11 grid of LEDs, controlled by an Arduino micro and two SIPO shift registers. The main challenge to being able to control the grid of LEDs was the limited number of outputs of the microcontroller I had. I was able to get around this issue by using the SIPO shift registers to load data about which LEDs should be on sequentially into the registers and then output it to the LED matrix all at once, which allowed many LEDs to be controlled by a single pin. I used this trick in conjunction with multiplexing, where each row is lit in very quick succession, making it appear as if all the LEDs are lit when in actuality only a single row is lit at a time. This allowed the entire matrix of 121 LEDs to be controlled from just 14 pins of the Arduino."
         },
         {
             "type": "img",
@@ -78,7 +78,19 @@
         },
         {
             "type": "p",
-            "content": "In order to use the matrix as a clock display, I’m currently working on providing Wi-Fi connectivity for this project. I’m doing this using an ESP8266 module and code I’ve written in the Arduino programming language that sends AT commands over Serial to the Wi-Fi Module and uses UDP to obtain time data from an NTP server."
+            "content": "The original inspiration behind this project was to create a clock from a low-resolution LED matrix, which I had been inspired to make after seeing something similar at a store."
+        },
+        {
+            "type": "img",
+            "content": "led_inspiration.JPG"
+        },
+        {
+            "type": "caption",
+            "content": "The inspiration behind this project, which I saw at the MoMA design store in Tokyo during a trip to Japan."
+        },
+        {
+            "type": "p",
+            "content": "In order to use the matrix as a clock display, I worked on some code to connect to Wi-Fi using the Arduino I already had and an additional ESP8266 module. This required writing code in the Arduino programming language that sends raw AT commands over Serial to the Wi-Fi Module. It was quite fun to learn the basics of Wi-Fi from this endeavor, but it proved a whole lot harder than using a microcontroller with built in Wi-Fi, which I'd probably use in the future. The schematic diagram  below shows the whole controller for the LED matrix, including the Wi-Fi module."
         },
         {
             "type": "img",
@@ -88,5 +100,112 @@
     "height": 1,
     "width": 2,
     "priority": 3
+ },
+ {
+    "title": "Website",
+    "image": "website_cover.png",
+    "tags": [
+      "Javscript", "HTML", "Python"
+    ],
+    "body": [
+        {
+            "type": "p",
+            "content": "The first iteration of this website was published in the summer of 2019, and I’ve been adding to it every now and then ever since. Here, I’ll write a little about the inner workings, as well as some chronicle about how the website came to be the way it is now. The page is entirely static, with some pieces precompiled by Python programs and some pieces generated dynamically. The main feature of the original version of the website was the project grid, which <a href=\"/projects.html\" class=\"ext_link\">still exists now</a> in a similar form. Part of the inspiration for this grid was the cool layouts that can be achieved with CSS’s grid layout."
+        },
+        {
+            "type": "img",
+            "content": "website_grid.png"
+        },
+        {
+            "type": "p",
+            "content": "My project grid is built on top of a CSS grid with square cells, that has a dynamic number of columns based on the width of the window. The data specifying the projects in contained in a json file, which is read dynamically by a Javascript program when the page is loaded. Each project has a specified pattern of grid cells that it takes up (e.g. 2 by 2 or 1 by 2), and a priority that specifies how important it is for that project to be placed near the top of the grid. From these, a recursive algorithm is called that tests possible permutations of the projects by performing recursive swaps and evaluates the layouts based on how compact they are and how much they conform to the desired order as specified by the inputted priority values. The actual pages that include text about the projects (like this one) are separately pre-compiled by a Python program that modifies an HTML template page, which reads data from a json file that specifies a series of blocks of content for each project's page. I wrote this code before I learned about existing templating workflows, and thus ended up reimplementing a lot of technologies that already existed—so this might not be the solution I would use if implementing this again. That being said, the program I’ve developed allows me to quickly add new types of blocks (e.g. captions for images) that I can entirely control the appearance of."
+        },
+        {
+            "type": "p",
+            "content": "I added the list of publications, which is now on the <a href=\"/\" class=\"ext_link\">homepage</a>, after the project grid, and thus was able to reuse some of the pre-existing infrastructure. The main goal of the publications list is for it to be incredibly simple to update, which I achieved by making the list generate dynamically from a json file containing the data. Similarly to the project grid, this involves dynamically building HTML elements with Javascript when the page is loaded."
+        },
+        {
+            "type": "p",
+            "content": "The spinning cube visible in various places of the website has been part of the design since very early on, inspired by the potential for making simple cool animations using inline svgs."
+        },
+        {
+            "type": "img",
+            "content": "website_design.png"
+        },
+        {
+            "type": "caption",
+            "content": "The first design I made for the website, which includes the spinning cube (and the same font I use now for the headings!)."
+        },
+        {
+            "type": "p",
+            "content": "In order to show the animation, I compute the 3D location of the points of the rotated cube at each frame, project them into 2D with an orthographic projection, and then connect them in a pre-determined order to create the svg code for the cube, which is then injected into the HTML of the website. I really love working with inline svgs, since its so easy to control properties (such as the stroke) from CSS."
+        },
+        {
+            "type": "p",
+            "content": "The most recent feature I added to my website is dark mode, which can be toggled by clicking the spinning cube on any page. When I first wrote the website, I used a CSS variable to store the accent color (e.g. the blue for light mode), so dynamically changing that color was incredibly simple, which inspired me to add a dark mode. It’s implemented by storing a cookie that remembers which mode is currently active, which allows the mode to persist when the page is reloaded or a new page is navigated to. In order to actually change the colors, an extra stylesheet which defines the colors for dark mode is switched from active to inactive or vice versa when the cookie is updated."
+        }
+    ],
+    "git_link": "https://github.com/zoemarschner/zoemarschner.com",
+    "height": 1,
+    "width": 2,
+    "priority": 5.5
+ },
+ {
+    "title": "Hiking Maps",
+    "image": "hiking_cover.jpeg",
+    "tags": [
+      "Python", "OSM", "PDF"
+    ],
+    "body": [
+        {
+            "type": "p",
+            "content": "Whenever I go hiking, I usually print out maps from online before leaving, but it’s often a pain to find high quality maps at the correct scale. I wrote a program which makes topographic maps cropped to show given GPS tracks. This required first creating a properly scaled map, and then  adding an additional vector layer of info on top of the map. My map was inspired stylistically by the design of the <a href=\"ngmdb.usgs.gov/topoview/viewer\" class=\"ext_link\">USGS quads</a>."
+        },
+        {
+            "type": "img",
+            "content": "hiking_usgs_quad.png"
+        },
+        {
+            "type": "caption",
+            "content": "A portion of the USGS quad that includes Mt. Greylock, the highest point in Massachusetts."
+        },
+        {
+            "type": "p",
+            "content": "I built the base maps by downloading Open Street Map tiles. OSM has a standard convention for naming tiles (<a href=\"https://wiki.openstreetmap.org/wiki/Slippy_map_tilenames\" class=\"ext_link\">“slippy map” names</a>), which allows different styles of tile to be used by simply interchanging the url for the tile server. I ended up using a custom map style created in <a href=\"https://www.mapbox.com\" class=\"ext_link\">Mapbox</a>, which let me emulate the classic topographic map look seen in the USGS quads."
+        }, 
+        {
+            "type": "img",
+            "content": "hiking_osm_example.png"
+        },
+        {
+            "type": "caption",
+            "content": "An example map I created using my tiles, showing Ishaptina Ridge, the highest point of Ontario."
+        },
+        {
+            "type": "p",
+            "content": "In order to scale the maps correctly, I calculated the region of the map given the extent of the GPS track for the hike and the desired aspect ratio, downloaded all the tiles that comprised that region, and then cropped them to the correct size. In order to draw the route and scale, I used a python package called reportlab, which includes nice features for generating and editing PDF documents."
+        }, 
+        {
+            "type": "img",
+            "content": "hiking_ishpatina_map.png"
+        },
+        {
+            "type": "caption",
+            "content": "The final map for one day of my canoe camping trip to the summit of Ishpatina Ridge."
+        },
+        {
+            "type": "p",
+            "content": "I ended up using this program first to generate maps for my canoe camping trips to the French River and Ishpatina Ridge during my summer in Ontario in 2021!"
+        },
+        {
+            "type": "img_gallery",
+            "content": ["hiking_inuse_1.jpeg", "hiking_inuse_2.JPG"],
+            "caption": "Laminating the maps proved an essential addition when using them for canoeing."
+        }
+    ],
+    "git_link": "https://github.com/zoemarschner/hiking-maps",
+    "height": 2,
+    "width": 2,
+    "priority": 7
  }
 ]
