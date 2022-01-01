@@ -6,3 +6,13 @@ body {
 	background-color: rgb(32, 33, 36);
 }
 
+#projects > .ext_link:hover .link_arrow {
+	stroke: white;
+	animation: bluewhite 0.2s;
+}
+
+
+@keyframes bluewhite {
+  from { color: var(--accent_color); }
+  to   { color: white; }
+}

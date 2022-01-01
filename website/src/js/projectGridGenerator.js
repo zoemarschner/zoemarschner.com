@@ -95,16 +95,30 @@ function resetGridStyle(rows, cols) {
 	gridElem.style.setProperty('grid-template-rows', `repeat(${rows}, 1fr)`)
 	gridElem.style.setProperty('grid-template-columns', `repeat(${cols}, 1fr)`)
 
-
 	//set the height to what it should be if the 80vw case is met
-	gridElem.style.setProperty('height', `calc(calc(calc(calc(80vw - ${TILE_GUTTER * (cols - 1)}px) / ${cols}) * ${rows}) + ${TILE_GUTTER * (rows - 1)}px)`)
+	//====dec 2021 80vw case changed to 100vw-15rem, 80vw if its 2 cols or less====
+	if (cols <= 2) {
+		outer_size = '80vw'
+	} else {
+		outer_size = '100vw - 15rem'
+	}
+
+	let styleSheet = getStyleSheet()
+
+	height_str = `calc(calc(calc(calc(100vw - 15rem - ${TILE_GUTTER * (cols - 1)}px) / ${cols}) * ${rows}) + ${TILE_GUTTER * (rows - 1)}px)`
+	height_str_small = `calc(calc(calc(calc(80vw - ${TILE_GUTTER * (cols - 1)}px) / ${cols}) * ${rows}) + ${TILE_GUTTER * (rows - 1)}px)`
+
+	styleSheet.insertRule(`#project_grid {height: ${height_str};}`, styleSheet.cssRules.length - 2)
+	styleSheet.insertRule(`@media screen and (max-width: ${minWidthFor(2)}px) {#project_grid { height: ${height_str_small}; }}`, styleSheet.cssRules.length - 2)
+
 
 	//add height media query if cols == 4 (that is, if its possible to reach point where we want to display constant width)
 	if (cols == 4) {
-		let styleSheet = getStyleSheet()
 		let curBlockWidth = (5 * TILE_MIN_WIDTH + TILE_GUTTER) / 4
-		styleSheet.insertRule(`@media screen and (min-width: ${minWidthFor(5)}px) {#project_grid{height: ${curBlockWidth * rows + TILE_GUTTER * (rows - 1)}px !important;}}`, styleSheet.cssRules.length - 2)
+		styleSheet.insertRule(`@media screen and (min-width: ${minWidthFor(6)}px) {#project_grid{height: ${curBlockWidth * rows + TILE_GUTTER * (rows - 1)}px !important;}}`, styleSheet.cssRules.length - 2)
 	}
+
+
 	
 }
 

@@ -36,11 +36,21 @@ gulp.task('sass', function(callback) {
     });
     callback(err);
   });
+
+  exec('sass website/src/sass/projectGridStylesheet.scss:website/public/css/projectGridStylesheet.css', function (err, stdout, stderr) {
+    // console.log(stdout);
+    // console.log(stderr);
+    browserSync.reload({
+      stream: true
+    });
+    callback(err);
+  });
 });
 
 gulp.task('watch', function(callback) {
   gulp.watch('website/src/sass/*.scss', gulp.series('sass')); 
   gulp.watch('website/src/py/*', gulp.series('build_page')); 
+  gulp.watch('website/data/p*', gulp.series('build_page')); 
 
   callback();
 });

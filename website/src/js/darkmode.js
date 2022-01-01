@@ -8,6 +8,7 @@ window.addEventListener('load', function init() {
 		cube.addEventListener('click', function() { 
 			localStorage.darkMode = !(localStorage.darkMode === 'true');
 			update_darkmode(localStorage.darkMode === 'true');
+			localStorage.hello2 = localStorage.darkMode
 		});
 	}
 });
@@ -24,7 +25,7 @@ function update_darkmode(new_mode_dark) {
 	for (var i = 0; i < document.styleSheets.length; i++) {
 		ss = document.styleSheets[i];
 		if (ss.href.includes("darkmode")) {
-			ss.disabled = !new_mode_dark; 
+			ss.disabled = !new_mode_dark;
 			break;
 		}
 	}
