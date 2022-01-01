@@ -54,3 +54,14 @@ a {
 	background-position: -95%;
 	transition: background-position .5s;
 }
+
+
+
+/* cube formatting */
+
+#cube {
+	stroke: var(--accent_color);
+	vertical-align: baseline;
+	margin-right: 20px;
+	cursor: pointer;
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Website</title>
+	<link rel="stylesheet" href="../public/css/projectStylesheet.css">
+	<link rel="stylesheet" href="../public/css/generalStylesheet.css">
+	<link rel="stylesheet" href="../public/css/navbarStylesheet.css">
+	<link rel="stylesheet" href="../public/css/darkmodeStylesheet.css">
+	<script src="../src/js/cube.js"></script>
+	<script src="../src/js/darkmode.js"></script>
+	<link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital@0;1&family=Source+Code+Pro:wght@600;700&display=swap" rel="stylesheet">
+	<link rel="icon" href="../favicon.png" sizes="32x32">
+</head>
+<body>
+
+<div id="outer_container">
+	<svg id="cube" height="30" width="30">
+		 <path id="cube_path" stroke-width="1" fill="none"/>
+	</svg>
+	<!-- <h1 id="projects">Website</h1> -->
+	<div id="title_box">
+		<h1 id="title">Website</h1>
+		<p id="git_message">View on <a href=https://github.com/zoemarschner/zoemarschner.com class="ext_link">GitHub</a></p>
+	</div>
+	<p>The first iteration of this website was published in the summer of 2019, and I’ve been adding to it every now and then ever since. Here, I’ll write a little about the inner workings, as well as some chronicle about how the website came to be the way it is now. The page is entirely static, with some pieces precompiled by Python programs and some pieces generated dynamically. The main feature of the original version of the website was the project grid, which <a href="/projects.html" class="ext_link">still exists now</a> in a similar form. Part of the inspiration for this grid was the cool layouts that can be achieved with CSS’s grid layout.</p><img src="../public/img/project_images/website_grid.png"><p>My project grid is built on top of a CSS grid with square cells, that has a dynamic number of columns based on the width of the window. The data specifying the projects in contained in a json file, which is read dynamically by a Javascript program when the page is loaded. Each project has a specified pattern of grid cells that it takes up (e.g. 2 by 2 or 1 by 2), and a priority that specifies how important it is for that project to be placed near the top of the grid. From these, a recursive algorithm is called that tests possible permutations of the projects by performing recursive swaps and evaluates the layouts based on how compact they are and how much they conform to the desired order as specified by the inputted priority values. The actual pages that include text about the projects (like this one) are separately pre-compiled by a Python program that modifies an HTML template page, which reads data from a json file that specifies a series of blocks of content for each project's page. I wrote this code before I learned about existing templating workflows, and thus ended up reimplementing a lot of technologies that already existed—so this might not be the solution I would use if implementing this again. That being said, the program I’ve developed allows me to quickly add new types of blocks (e.g. captions for images) that I can entirely control the appearance of.</p><p>I added the list of publications, which is now on the <a href="/" class="ext_link">homepage</a>, after the project grid, and thus was able to reuse some of the pre-existing infrastructure. The main goal of the publications list is for it to be incredibly simple to update, which I achieved by making the list generate dynamically from a json file containing the data. Similarly to the project grid, this involves dynamically building HTML elements with Javascript when the page is loaded.</p><p>The spinning cube visible in various places of the website has been part of the design since very early on, inspired by the potential for making simple cool animations using inline svgs.</p><img src="../public/img/project_images/website_design.png"><p class="caption">The first design I made for the website, which includes the spinning cube (and the same font I use now for the headings!).</p><p>In order to show the animation, I compute the 3D location of the points of the rotated cube at each frame, project them into 2D with an orthographic projection, and then connect them in a pre-determined order to create the svg code for the cube, which is then injected into the HTML of the website. I really love working with inline svgs, since its so easy to control properties (such as the stroke) from CSS.</p><p>The most recent feature I added to my website is dark mode, which can be toggled by clicking the spinning cube on any page. When I first wrote the website, I used a CSS variable to store the accent color (e.g. the blue for light mode), so dynamically changing that color was incredibly simple, which inspired me to add a dark mode. It’s implemented by storing a cookie that remembers which mode is currently active, which allows the mode to persist when the page is reloaded or a new page is navigated to. In order to actually change the colors, an extra stylesheet which defines the colors for dark mode is switched from active to inactive or vice versa when the cookie is updated.</p>
+</div>
+
+<p id="footer">
+		Designed and <a href="https://github.com/zoemarschner/personal_website" class="ext_link">coded</a> by Zoë Marschner / last updated December 2021</p>
+
+		<div id="nav-bar"> 
+		<h2> <a href="/" id="home_link"> <svg id="home_icon" viewbox="0 0 50 45">
+				<polyline class="st0" points="49,26.12 25,2.98 1,26.12 "/>
+				<path class="st0" d="M7.96,19.61v22.25h10.59c0-11.61,2.96-15.74,6.61-15.74s6.61,4.13,6.61,15.74h10.28V19.61"/>
+			</svg> 
+			Home</a>
+		</h2>
+		<h2>/</h2>
+		<h2><a href="/projects.html">  Projects </a></h2>
+		<h2>/</h2>
+		<h2>Website</h2>
+	</div>
+</body>
+</html>

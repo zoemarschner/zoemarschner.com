@@ -44,31 +44,6 @@
   padding: 2px 9px; }
 
 /* intro paragraph/footer */
-#cube {
-  stroke: var(--accent_color);
-  vertical-align: baseline;
-  margin-right: 20px;
-  cursor: pointer; }
-
-.project_link {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  top: 0;
-  left: 0;
-  z-index: 1; }
-
-@media only screen and (max-width: 700px) {
-  .research-container {
-    flex-direction: column; }
-
-  .research-info {
-    width: 100%;
-    margin-top: 20px; }
-
-  .research-image {
-    height: 40vw;
-    width: 40vw; } }
 /* two column redesign code */
 #portrait {
   width: 100%; }
@@ -85,7 +60,7 @@
   margin-left: 30rem;
   margin-top: 5rem;
   margin-bottom: 5rem;
-  margin-right: 6rem; }
+  margin-right: 7.5rem; }
 
 #sidebar-box {
   position: absolute;
@@ -96,10 +71,8 @@
 
 #name {
   padding-top: 1rem;
-  font-size: 1.5em; }
-
-#info {
-  margin-top: 0.8em; }
+  font-size: 1.5em;
+  margin-bottom: 0.8em; }
 
 #info h2 {
   margin-top: 0.3em;
@@ -119,7 +92,82 @@
 #mail > * {
   stroke: var(--accent_color);
   stroke-width: 35px;
+  fill: none; }
+
+.link_arrow {
+  stroke: var(--accent_color);
+  stroke-width: 50px;
   fill: none;
-  vector-effect: "non-scaling-stroke"; }
+  height: 16px;
+  margin-left: 8px; }
+
+#projects > .ext_link:hover .link_arrow {
+  stroke: black;
+  animation: blueblack 0.2s; }
+
+@keyframes blueblack {
+  from {
+    color: var(--accent_color); }
+  to {
+    color: black; } }
+/* make homepage responsive */
+@media screen and (max-width: 1000px) {
+  #sidebar {
+    width: 40vw; }
+
+  #main {
+    margin-left: 40vw;
+    margin-right: 10vw; } }
+@media only screen and (max-width: 920px) and (min-width: 500px) {
+  #name {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; } }
+@media only screen and (max-width: 700px) {
+  .research-container {
+    flex-direction: column;
+    gap: 15px;
+    padding-bottom: 50px; } }
+@media only screen and (max-width: 500px) {
+  #sidebar {
+    position: relative;
+    width: auto;
+    margin-left: 10vw;
+    margin-right: 10vw;
+    margin-top: 5vw;
+    margin-bottom: 5vw; }
+
+  #sidebar-box {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    top: auto;
+    position: relative;
+    width: 100%;
+    margin: 0; }
+
+  #portrait {
+    height: 40vw;
+    width: auto;
+    padding-right: 10px;
+    object-fit: contain;
+    object-position: left; }
+
+  #main {
+    margin-left: 10vw;
+    margin-right: 10vw;
+    margin-top: 20px; } }
+@media screen and (min-width: 1350px) {
+  #main {
+    padding-left: calc((100vw - 1040px) * 0.5 - 0.25 * 30rem);
+    margin-right: calc((100vw - 1040px) * 0.5); }
+
+  #sidebar {
+    margin-left: calc((100vw - 1040px) * 0.5 - 0.25 * 30rem); } }
+@media only screen and (min-aspect-ratio: 50 / 25) {
+  #portrait {
+    height: 50vh;
+    width: auto;
+    align-self: flex-end; } }
 
 /*# sourceMappingURL=homeStylesheet.css.map */

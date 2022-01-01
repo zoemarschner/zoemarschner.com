@@ -78,37 +78,6 @@
 
 /* intro paragraph/footer */
 
-#cube {
-	stroke: var(--accent_color);
-	vertical-align: baseline;
-	margin-right: 20px;
-	cursor: pointer;
-}
-
-.project_link {
-	position: absolute;
-	height: 100%;
-	width: 100%;
-	top: 0;
-	left: 0;
-	z-index: 1;
-}
-@media only screen and (max-width: 700px) {
- 	.research-container {
-		flex-direction: column;
-	}
-
-	.research-info {
-		width: 100%;
-		margin-top: 20px;
-	}
-	.research-image {
-		height: 40vw;
-		width: 40vw;
-	}
-}
-
-
 /* two column redesign code */
 #portrait {
 	width: 100%;
@@ -129,7 +98,7 @@ $SIDEBAR_WIDTH: 30;
     margin-left: $SIDEBAR_WIDTH* 1rem;
     margin-top: 5rem;
     margin-bottom: 5rem;
-    margin-right: 0.2 * $SIDEBAR_WIDTH* 1rem;
+    margin-right: 0.25 * $SIDEBAR_WIDTH* 1rem;
 }
 
 #sidebar-box {
@@ -145,17 +114,10 @@ $SIDEBAR_WIDTH: 30;
 #name {
 	padding-top: 1rem;
 	font-size: 1.5em;
+	margin-bottom: 0.8em;
 
 }
 
-#info {
-	margin-top: 0.8em;
-	// display: flex;
-	// flex-direction: column;
-	// // gap: 1em;
-	// text-align: center;
-	// align-content: center;
-}
 
 #info  h2 {
 	margin-top: 0.3em;
@@ -177,25 +139,158 @@ $SIDEBAR_WIDTH: 30;
 }
 
 #mail> * {
-	stroke: var(--accent_color);;
+	stroke: var(--accent_color);
 	stroke-width: 35px;
 	fill: none;
-	vector-effect: "non-scaling-stroke";
 }
 
-// @media screen and (min-width: minWidthFor(5) * 1px) {
-// 	#outer_container{
-// 		width: (minWidthFor(5) - $GRID_MARGIN * 2) * 1px;
-// 	}
+.link_arrow {
+	stroke: var(--accent_color);
+	stroke-width: 50px;
+	fill: none;
+	height: 16px;
+	margin-left: 8px;
+}
 
-// 	.research-info {
-// 		width: (minWidthFor(5) - $GRID_MARGIN * 2) * 0.775 * 1px;
-// 	}
+#projects > .ext_link:hover .link_arrow {
+	stroke: black;
+	animation: blueblack 0.2s;
+}
 
+
+@keyframes blueblack {
+  from { color: var(--accent_color); }
+  to   { color: black; }
+}
+
+
+/* make homepage responsive */
+
+// switch too resizing image when it gets small (width-wise)
+@media screen and (max-width: 1000px) {
+	// .research-title {
+	// 	color: blue;
+	// }
+
+	// .research-container {
+	// 	flex-direction: column;
+	// 	gap: 10px;
+	// 	padding-bottom: 50px;
+	// }
+
+	#sidebar {
+		width: 40vw;
+	}
+
+	#main {
+		margin-left: 40vw;
+		margin-right: 0.25 * 40vw;
+	}
+}
+
+// name two column when too small to show cube and name
+@media only screen and (max-width: 920px) and (min-width: 500px) {
+
+	#name {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+	}
+}
+
+// switch to one column research when small
+@media only screen and (max-width: 700px) {
+ // 	.research-container {
+	// 	flex-direction: column;
+	// }
+
+	.research-container {
+		flex-direction: column;
+		gap: 15px;
+		padding-bottom: 50px;
+	}
+
+	// .research-info {
+	// 	width: 100%;
+	// 	margin-top: 20px;
+	// }
 // 	.research-image {
-// 		width: (minWidthFor(5) - $GRID_MARGIN * 2) * 0.1875 * 1px;
-// 		height: (minWidthFor(5) - $GRID_MARGIN * 2) * 0.1875 * 1px;
+// 		height: 40vw;
+// 		width: 40vw;
 // 	}
-// }
+}
+
+
+//switch to one column for entire thing on mobile
+
+@media only screen and (max-width: 500px) {
+ 	#sidebar {
+	 	position: relative;
+	    width: auto; 
+
+	    margin-left: 10vw;
+	    margin-right: 10vw;
+	    margin-top: 5vw;
+	    margin-bottom: 5vw;
+	}	
+
+	#sidebar-box {
+		display: flex;
+		flex-direction: column;
+	    height: 100%;
+	    top: auto;
+	    position: relative;
+	    width: 100%;
+
+	    margin: 0;
+	}
+
+	#portrait {
+		height: 40vw;
+		// height: 100%;
+		width: auto;
+		padding-right: 10px;
+
+		object-fit: contain;
+		object-position: left;
+
+	}
+
+	#main {
+		margin-left: 10vw;
+    	margin-right: 10vw;
+    	margin-top: 20px;
+	}
+
+	#name {
+		// padding-top: 0;
+	}
+
+}
+
+// switch to fixed width when too big
+// goal width is 1040
+
+@media screen and (min-width: 1350px) {
+	#main {
+	    padding-left: calc((100vw - 1040px) * 0.5 - 0.25 * 30rem);
+	    margin-right: calc((100vw - 1040px) * 0.5);
+	}
+
+	#sidebar {
+    	margin-left: calc((100vw - 1040px) * 0.5 - 0.25 * 30rem);
+	}
+}
+
+// scale image when too small (height)
+
+@media only screen and (min-aspect-ratio: 50/25) {
+	#portrait {
+		height: 50vh;
+		width:auto;
+		align-self: flex-end;
+
+	}
+}
 
 
