@@ -134,12 +134,10 @@ function* closest_pair_helper(pts, left, right) {
 
 		// go through points in strip
 		pts_in_strip.sort((pt1, pt2)=>pt1[1]-pt2[1]);
-		console.log(pts_in_strip)
 		
 		for (let i=0; i < pts_in_strip.length; i++) {
 			let j = i-1;
 			while (j >= 0 && -pts_in_strip[j][1] + pts_in_strip[i][1] < d) {
-				console.log(-pts_in_strip[j][1] + pts_in_strip[i][1])
 				const pi = pts_in_strip[i];
 				const pj = pts_in_strip[j];
 				cur_dist = pt_dist(pi, pj);
