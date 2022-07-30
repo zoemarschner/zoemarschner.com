@@ -46,7 +46,10 @@
 /* intro paragraph/footer */
 /* two column redesign code */
 #portrait {
-  width: 100%; }
+  width: 100%;
+  aspect-ratio: 0.75;
+  outline: none;
+  background-color: #EEE; }
 
 #sidebar {
   position: fixed;
@@ -164,7 +167,7 @@
 
   #sidebar {
     margin-left: calc((100vw - 1040px) * 0.5 - 0.25 * 30rem); } }
-@media only screen and (min-aspect-ratio: 50 / 25) {
+@media only screen and (max-width: 1350px) and (min-aspect-ratio: 50 / 25) {
   #portrait {
     height: 50vh;
     width: auto;
