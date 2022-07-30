@@ -81,6 +81,9 @@
 /* two column redesign code */
 #portrait {
 	width: 100%;
+	aspect-ratio: 0.75;
+	outline: none;
+	background-color: #EEE;
 }
 
 $SIDEBAR_WIDTH: 30;
@@ -284,7 +287,7 @@ $SIDEBAR_WIDTH: 30;
 
 // scale image when too small (height)
 
-@media only screen and (min-aspect-ratio: 50/25) {
+@media only screen and (max-width: 1350px) and (min-aspect-ratio: 50/25) {
 	#portrait {
 		height: 50vh;
 		width:auto;

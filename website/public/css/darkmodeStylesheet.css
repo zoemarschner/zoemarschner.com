@@ -11,6 +11,9 @@ body {
 	animation: bluewhite 0.2s;
 }
 
+#portrait {
+	background-color: rgb(50, 50, 55);
+}
 
 @keyframes bluewhite {
   from { color: var(--accent_color); }

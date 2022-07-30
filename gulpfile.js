@@ -3,7 +3,7 @@ var exec = require('child_process').exec;
 var browserSync = require('browser-sync').create();
 
 gulp.task('date', function(callback) {
-  exec('cd website/src/py\npython3 staticPageGenerator.py\ncd ../../..', function (err, stdout, stderr) {
+  exec('cd website/src/py\npython3 update_date.py\ncd ../../..', function (err, stdout, stderr) {
     console.log(stdout.slice(0, -1));
     if (stderr != 0) {console.log(stderr);}
     callback(err);
