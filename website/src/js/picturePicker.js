@@ -9,6 +9,8 @@ window.addEventListener('load', function init() {
 	  	console.log(chosen_image);
 
 	  	title = chosen_image.substr(0, chosen_image.indexOf('.'));
+	  	extra_info_ind = title.indexOf("_");
+	  	title = extra_info_ind == -1 ? title : title.substr(0, extra_info_ind);
 
 	  	portrait = document.getElementById("portrait");
 	  	portrait.title = title;
