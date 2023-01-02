@@ -24,9 +24,12 @@ function update_darkmode(new_mode_dark) {
 	// find darkmode stylesheet
 	for (var i = 0; i < document.styleSheets.length; i++) {
 		ss = document.styleSheets[i];
-		if (ss.href.includes("darkmode")) {
-			ss.disabled = !new_mode_dark;
-			break;
+
+		if (ss.href !== null) {
+			if (ss.href.includes("darkmode")) {
+				ss.disabled = !new_mode_dark;
+				break;
+			}
 		}
 	}
 }
