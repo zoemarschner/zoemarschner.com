@@ -77,6 +77,14 @@
   font-size: 1.5em;
   margin-bottom: 0.8em; }
 
+#news {
+  background-color: rgba(var(--callout_color), 0.2);
+  border-color: rgb(var(--callout_color));
+  border-radius: 5px;
+  border-style: solid;
+  margin-bottom: 1em;
+  padding: 0.5em; }
+
 #info h2 {
   margin-top: 0.3em;
   font-size: 1.1em;

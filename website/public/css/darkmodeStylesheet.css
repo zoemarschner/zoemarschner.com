@@ -1,4 +1,8 @@
-:root { --accent_color: #ed7402; }
+:root { 
+	--accent_color: #ed7402;
+/*	--callout_color: 136, 0, 255;*/
+	--callout_color: 181, 171, 255;
+}
 
 *, a { color: white }
 
