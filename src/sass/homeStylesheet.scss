@@ -121,6 +121,17 @@ $SIDEBAR_WIDTH: 30;
 
 }
 
+#news {
+	background-color: rgba(var(--callout_color), 0.2);
+	border-color: rgb(var(--callout_color));
+	border-radius: 5px;
+	border-style: solid;
+
+	margin-bottom: 1em;
+	// text-align: center;
+	padding: 0.5em;
+}
+
 
 #info  h2 {
 	margin-top: 0.3em;
