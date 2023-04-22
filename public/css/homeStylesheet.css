@@ -158,11 +158,12 @@
     margin: 0; }
 
   #portrait {
-    height: 40vw;
+    height: 60vw;
     width: auto;
-    padding-right: 10px;
+    margin-right: 10px;
     object-fit: contain;
-    object-position: left; }
+    object-position: left;
+    width: fit-content; }
 
   #main {
     margin-left: 10vw;
