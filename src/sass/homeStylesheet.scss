@@ -29,6 +29,7 @@
 	border-radius: 15px;
 	flex-shrink: 0;
 	margin-right: 1em;
+	background-color: #e6e7e7;
 }
 
 .research-info {
@@ -55,6 +56,13 @@
     line-height: 90%;
     font-family: 'Source Code Pro', monospace;
     padding-bottom: 10px;
+}
+
+.author-note {
+	font-size: 14px;
+    // line-height: 90%;
+    // font-family: 'Source Code Pro', monospace;
+    // padding-bottom: 10px;
 }
 
 .links {

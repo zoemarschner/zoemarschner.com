@@ -35,6 +35,13 @@ function processResearchJson(jsonObj) {
 		info.appendChild(pubinfo);
 		outerDiv.appendChild(info);
 
+		if (paper.note !== undefined) {
+			let note = document.createElement("p");
+			note.classList.add("author-note");
+			note.innerHTML = paper.note;
+			info.appendChild(note);
+		}	
+
 
 		let links = document.createElement("div");
 		links.classList.add("links");
@@ -45,9 +52,12 @@ function processResearchJson(jsonObj) {
  			 this_link.innerHTML = key;
  			 links.appendChild(this_link)
 		}
-
 		info.appendChild(links);
-		container.appendChild(outerDiv);		
+
+		
+		container.appendChild(outerDiv);
+	
 
 	});
+
 }
