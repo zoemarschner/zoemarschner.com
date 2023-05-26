@@ -1,4 +1,11 @@
-[{"title": "Sum-of-Squares Geometry Processing",
+[{"title": "Sum-of-Squares Collision Detection for Curved Shapes and Paths",
+  "authors": [ "Paul Zhang*", "Zoë Marschner*", "Justin Solomon", "Rasmus Tamstorf"],
+  "conference": "SIGGRAPH (conference)",
+  "year": 2023,
+  "image": "sos_cd.png",
+  "links": {},
+  "note": "(* denotes  equal contribution)"
+},{"title": "Sum-of-Squares Geometry Processing",
   "authors": ["Zoë Marschner", "Paul Zhang", "David Palmer", "Justin Solomon"],
   "conference": "SIGGRAPH Asia",
   "year": 2021,
