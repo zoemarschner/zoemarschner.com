@@ -3,7 +3,7 @@
   "conference": "SIGGRAPH (conference)",
   "year": 2023,
   "image": "sos_cd.png",
-  "links": {},
+  "links": {"PDF": "https://dl.acm.org/doi/pdf/10.1145/3588432.3591507", "Supplement": "https://dl.acm.org/action/downloadSupplement?doi=10.1145%2F3588432.3591507&file=supplemental.pdf"},
   "note": "(* denotes  equal contribution)"
 },{"title": "Sum-of-Squares Geometry Processing",
   "authors": ["Zoë Marschner", "Paul Zhang", "David Palmer", "Justin Solomon"],
