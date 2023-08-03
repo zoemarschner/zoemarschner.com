@@ -6,7 +6,7 @@ import glob, os, json
 imgdir = "../../public/img/spotlight_pictures"
 
 os.chdir(imgdir)
-data = [file for file in glob.glob("*.JPG") + glob.glob("*.jpeg")]
+data = [file for file in glob.glob("*.JPG") + glob.glob("*.jpeg") + glob.glob("*.jpg")]
 
 with open(f'manifest.json', 'w') as f:
     json.dump(data, f)
