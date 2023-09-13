@@ -1,4 +1,11 @@
-[{"title": "Sum-of-Squares Collision Detection for Curved Shapes and Paths",
+[{"title": "Constructive Solid Geometry on Neural Signed Distance Fields",
+  "authors": [ "Zoë Marschner", "Silvia Sellán", "Hsueh-Ti Derek Liu", "Alec Jacobson"],
+  "conference": "SIGGRAPH Asia (conference)",
+  "year": 2023,
+  "image": "sdf_csg.png",
+  "links": {"PDF (coming soon!)": "zoemarschner.com"}
+},
+  {"title": "Sum-of-Squares Collision Detection for Curved Shapes and Paths",
   "authors": [ "Paul Zhang*", "Zoë Marschner*", "Justin Solomon", "Rasmus Tamstorf"],
   "conference": "SIGGRAPH (conference)",
   "year": 2023,
