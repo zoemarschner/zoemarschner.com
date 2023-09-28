@@ -3,7 +3,7 @@
   "conference": "SIGGRAPH Asia (conference)",
   "year": 2023,
   "image": "sdf_csg.png",
-  "links": {"PDF (coming soon!)": "/"}
+  "links": {"PDF": "papers/csg_on_neural_sdfs.pdf"}
 },
   {"title": "Sum-of-Squares Collision Detection for Curved Shapes and Paths",
   "authors": [ "Paul Zhang*", "Zoë Marschner*", "Justin Solomon", "Rasmus Tamstorf"],
