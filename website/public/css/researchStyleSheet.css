@@ -1,0 +1,93 @@
+:root {
+  --zoe-blue: #489acc;
+}
+
+
+#outer_container {
+	width: 900px;
+	margin: 0 auto;
+}
+
+h1 {
+	font-family: 'Linux Biolinum', sans-serif;
+	font-weight: bold;
+	font-size: 1.9em;
+	padding-top: 1em;
+}
+
+h2 {
+	font-family: 'Linux Biolinum', sans-serif;
+	font-weight: normal;
+	margin-bottom: 0.3em;
+	margin-top: 1.5em;
+}
+
+p {
+	font-family: 'Linux Libertine', serif;
+	margin-top: 0em; 
+}
+
+#caption {
+	font-family: 'Linux Libertine', serif;
+	font-style: italic;
+	font-size: 0.9em;
+}
+
+#authors > p {
+	font-family: 'Linux Biolinum', sans-serif;
+	margin: 0;
+	text-transform: uppercase;
+	font-size: 120%;
+}
+
+#authors > p > span {
+	text-transform: none;
+}
+
+#authors {
+	padding-bottom: 0.67em;
+}
+
+#teaser {
+	width: 100%;
+	padding-bottom: 0.3em;
+}
+
+#links > a, #links > p {
+	font-family: 'Linux Biolinum', sans-serif;
+	font-weight: bold;
+	color: var(--zoe-blue);
+	text-decoration: underline;
+	font-size: 1.2em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+    gap: 5px;
+}
+
+#links > p {
+	margin: 0px;
+	text-decoration: none;
+	color: black;
+
+}
+
+#links > a > img {
+	height: 1em;
+	image-rendering: pixelated;
+	image-rendering: -moz-crisp-edges;
+}
+
+#links {
+	display: flex;
+	gap: 10px;
+}
+
+#links-outer{
+	display: flex;
+	width: 100%;
+	justify-content: left;
+	padding-bottom: 2em;
+
+}
+

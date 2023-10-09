@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Constructive Solid Geometry on Neural Signed Distance Fields</title>
+	<link rel="stylesheet" href="../public/css/linuxFontStylesheet.css">
+	<link rel="stylesheet" href="../public/css/researchStylesheet.css">
+	<!-- <link rel="stylesheet" href="../public/css/generalStylesheet.css"> -->
+	<!-- <link rel="stylesheet" href="../public/css/navbarStylesheet.css">
+	<link rel="stylesheet" href="../public/css/darkmodeStylesheet.css"> -->
+	<script src="../src/js/darkmode.js"></script>
+	<link rel="icon" href="../favicon.png" sizes="32x32">
+</head>
+<body>
+
+<div id="outer_container">
+	<!-- <h1 id="projects">App for WICC</h1> -->
+	<h1 id="title">Constructive Solid Geometry on Neural Signed Distance Fields</h1>
+	<div id="authors">
+	<p>Zoë Marschner, <span> Massachusetts Institute of Technology and Carnegie Mellon University</span></p>
+	<p>Silvia Sellán, <span> University of Toronto</span></p> 
+	<p>Hsueh-Ti Derek Liu, <span> Roblox Research and University of Toronto</span></p> 
+	<p>Alec Jacobson, <span> University of Toronto and Adobe Research </span></p>
+	</div>
+	<div id="links-outer">
+		<div id = "links">
+			<a><img src="../public/img/icons/file.svg"/> PDF (50mb)</a>
+			<p>•</p>
+			<a><img src="../public/img/icons/file_lores.svg"/> PDF (5mb)</a>
+		</div>
+	</div>
+	<img id="teaser" src="../public/img/research_assets/2023/sdf_csg/teaser.png"/>
+	<p id="caption">Our method allows for the computation of exact neural SDFs of CSG operations. Here, we train one network to learn the swept volume of a stellated dodecahedron shape, parametric over the control points of the cubic Bézier path it is swept along. Specific swept volumes within this parameter space are then unioned together and with cylinders, resulting in a neural implicit which thanks to our regularization term forms an exact SDF of the word “SDF.”</p>
+	<h2> Abstract </h2>
+	<p>Signed Distance Fields (SDFs) parameterized by neural networks have recently gained popularity as a fundamental geometric representation. However, editing the shape encoded by a neural SDF remains an open challenge. A tempting approach is to leverage common geometric operators (e.g., boolean operations), but such edits often lead to incorrect non-SDF outputs (which we call Pseudo-SDFs), preventing them from being used for downstream tasks. In this paper, we characterize the space of Pseudo-SDFs, which are eikonal yet not true distance functions, and derive the closest point loss, a novel regularizer that encourages the output to be an exact SDF. We demonstrate the applicability of our regularization to many operations in which traditional methods cause a Pseudo-SDF to arise, such as CSG and swept volumes, and produce a true (neural) SDF for the result of these operations.</p>
+	<h2> Closest Point Energy </h2>
+	<p>
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sit amet nisi et tellus laoreet ultricies. Sed et egestas justo, et sagittis nisi. Vivamus lobortis enim vel ligula ullamcorper, in condimentum ligula auctor. Phasellus tempus posuere justo, in lobortis justo pulvinar eget. Praesent in accumsan dolor, ac malesuada nibh. Quisque a mi semper, egestas dui elementum, semper orci. Etiam quis felis nisi. Aliquam imperdiet erat in hendrerit auctor. Curabitur maximus rutrum massa et porta. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc id diam sit amet mi congue iaculis vel et mauris. </p>
+	<h2> Results </h2>
+	<p>Pellentesque eu ipsum vitae tellus cursus blandit. Curabitur pulvinar malesuada mi, in feugiat sapien. Nulla arcu metus, posuere quis neque a, dapibus cursus dolor. Nulla id venenatis leo. Mauris bibendum justo ex, quis aliquet tortor ornare quis. Donec eu dignissim orci. Cras cursus sit amet dolor sed pulvinar. Aliquam rhoncus consequat dolor, in elementum felis cursus vitae. Aenean suscipit enim ac enim pretium, aliquam dictum urna porta. Vestibulum vestibulum lacus nibh, a commodo quam venenatis in. Praesent commodo lacinia est, non ullamcorper mi efficitur eget.</p>
+</div>
+
+<p id="footer">
+		<a href='/'>zoemarschner.com</a>
+		© Zoë Marschner 2023
+</p>
+</body>
+</html>
