@@ -38,6 +38,13 @@ p {
 	margin: 0;
 	text-transform: uppercase;
 	font-size: 120%;
+	margin-bottom: 1px;
+}
+
+#authors > p > a {
+	color: black;
+	text-decoration-color: #909090;
+	text-decoration-style: dotted;
 }
 
 #authors > p > span {
