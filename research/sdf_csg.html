@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Constructive Solid Geometry on Neural Signed Distance Fields</title>
+	<link rel="stylesheet" href="../public/css/linuxFontsStylesheet.css">
+	<link rel="stylesheet" href="../public/css/researchStylesheet.css">
+	<!-- <link rel="stylesheet" href="../public/css/generalStylesheet.css"> -->
+	<!-- <link rel="stylesheet" href="../public/css/navbarStylesheet.css">
+	<link rel="stylesheet" href="../public/css/darkmodeStylesheet.css"> -->
+	<script src="../src/js/darkmode.js"></script>
+	<link rel="icon" href="../favicon.png" sizes="32x32">
+</head>
+<body>
+
+<div id="outer_container">
+	<!-- <h1 id="projects">App for WICC</h1> -->
+	<h1 id="title">Constructive Solid Geometry on Neural Signed Distance Fields</h1>
+	<div id="authors">
+	<p>Zoë Marschner, <span> Massachusetts Institute of Technology and Carnegie Mellon University</span></p>
+	<p>Silvia Sellán, <span> University of Toronto</span></p> 
+	<p>Hsueh-Ti Derek Liu, <span> Roblox Research and University of Toronto</span></p> 
+	<p>Alec Jacobson, <span> University of Toronto and Adobe Research </span></p>
+	</div>
+	<div id="links-outer">
+		<div id = "links">
+			<a href="../papers/csg_on_neural_sdfs.pdf"><img src="../public/img/icons/file.svg"/> PDF (50mb)</a>
+			<p>•</p>
+			<a href="../papers/csg_on_neural_sdfs_lo_res.pdf"><img src="../public/img/icons/file_lores.svg"/> PDF (5mb)</a>
+		</div>
+	</div>
+	<img id="teaser" src="../public/img/research_assets/2023/sdf_csg/teaser.png"/>
+	<p id="caption">Our method allows for the computation of exact neural SDFs of CSG operations. Here, we train one network to learn the swept volume of a stellated dodecahedron shape, parametric over the control points of the cubic Bézier path it is swept along. Specific swept volumes within this parameter space are then unioned together and with cylinders, resulting in a neural implicit which thanks to our regularization term forms an exact SDF of the word “SDF.”</p>
+	<h2> Abstract </h2>
+	<p>Signed Distance Fields (SDFs) parameterized by neural networks have recently gained popularity as a fundamental geometric representation. However, editing the shape encoded by a neural SDF remains an open challenge. A tempting approach is to leverage common geometric operators (e.g., boolean operations), but such edits often lead to incorrect non-SDF outputs (which we call Pseudo-SDFs), preventing them from being used for downstream tasks. In this paper, we characterize the space of Pseudo-SDFs, which are eikonal yet not true distance functions, and derive the closest point loss, a novel regularizer that encourages the output to be an exact SDF. We demonstrate the applicability of our regularization to many operations in which traditional methods cause a Pseudo-SDF to arise, such as CSG and swept volumes, and produce a true (neural) SDF for the result of these operations.</p>
+	<h2> Closest Point Loss </h2>
+	<p> Our work introduces the <em>closest point loss</em>, which can be used to penalize non-SDF regions of neural implicit functions. Unlike the previously used eikonal loss, our loss is able to penalize functions that are eikonal but do not obey the distance property (which we call Pseudo-SDFs).  <br> <br> The formulation of our loss is based off the closest point map, which for an exact SDF uses the distance value and gradient direction to project a point to the zero level set. In order to measure how much a given function deviates from an SDF, we sum the squared distance values of a set of test points after the map is applied. </p>
+	<video class="video" controls>
+  		<source src="../public/img/research_assets/2023/sdf_csg/cp_loss_animation_small.mp4" type="video/mp4">
+	 	Unsupported video! :(
+	</video>
+
+	<h2>Results</h2>
+	<p> With the closest point loss as a regularizer, we can create exact neural SDFs of CSG operations—and by adding a parameter space to our networks, we can solve whole families of these CSG problems by training a single network. This pin shape is created by performing unions and intersections between three primitives, the dimensions of which are controlled by four latent variables of the network. We visualize the different shapes our network outputs for different points in this latent space. </p>
+	<video class="video" controls>
+  		<source src="../public/img/research_assets/2023/sdf_csg/csg_cad.mp4" type="video/mp4">
+	 	Unsupported video! :(
+	</video>
+
+	<p id="footer">
+		<a href='/'>zoemarschner.com</a> &emsp;
+		© Zoë Marschner 2023
+</p>
+</div>
+
+
+</body>
+</html>

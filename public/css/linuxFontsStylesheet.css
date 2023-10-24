@@ -1,0 +1,56 @@
+@font-face {
+    font-family: 'Linux Biolinum';
+    src: url('../img/fonts/LinBiolinumO.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Linux Biolinum';
+    src: url('../img/fonts/LinBiolinumOI.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Linux Biolinum';
+    src: url('../img/fonts/LinBiolinumOB.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Linux Libertine';
+    src: url('../img/fonts/LinLibertineOBI.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Linux Libertine';
+    src: url('../img/fonts/LinLibertineOI.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Linux Libertine';
+    src: url('../img/fonts/LinLibertineO.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Linux Libertine';
+    src: url('../img/fonts/LinLibertineOB.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
