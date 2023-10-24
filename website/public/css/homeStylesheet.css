@@ -37,7 +37,11 @@
   font-size: 14px; }
 
 .links {
-  padding-top: 15px; }
+  padding-top: 15px; 
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 5px;
+}
 
 .links > a {
   margin-right: 7px;
