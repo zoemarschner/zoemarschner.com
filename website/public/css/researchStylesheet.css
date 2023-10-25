@@ -47,6 +47,11 @@ p {
 	text-decoration-style: dotted;
 }
 
+#authors > p > a:hover {
+	color: #606060;
+	text-decoration-color: var(--zoe-blue);
+}
+
 #authors > p > span {
 	text-transform: none;
 }
