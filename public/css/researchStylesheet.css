@@ -1,5 +1,6 @@
 :root {
   --zoe-blue: #489acc;
+  --zoe-blue-rgb: 72, 154, 204;
 }
 
 
@@ -112,6 +113,17 @@ p {
 
 #footer > a {
 	color: var(--zoe-blue);
+}
+
+#errata {
+	background-color: rgba(var(--zoe-blue-rgb),0.1);
+	padding: 5px;
+	border-radius: 5px;
+	border-color: var(--zoe-blue);
+	border-style: solid;
+	color: var(--zoe-blue);
+
+	margin-top:2.25em;
 }
 
 .video {

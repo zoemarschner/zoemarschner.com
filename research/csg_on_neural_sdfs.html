@@ -27,15 +27,21 @@
 		<div id = "links">
 			<a href="../papers/csg_on_neural_sdfs.pdf"><img src="../public/img/icons/file.svg"/> PDF (50mb)</a>
 			<p>•</p>
-			<a href="../papers/csg_on_neural_sdfs_lo_res.pdf"><img src="../public/img/icons/file_lores.svg"/> PDF (5mb)</a>
+			<a href="../papers/csg_on_neural_sdfs_lo_res.pdf"><img src="../public/img/icons/file_lores.svg"/> PDF (9mb)</a>
 			<p>•</p>
 			<a href="https://github.com/zoemarschner/csg_on_nsdf"><img src="../public/img/icons/code.svg"/>Code</a>
 		</div>
 	</div>
+
 	<img id="teaser" src="../public/img/research_assets/2023/sdf_csg/teaser.png"/>
 	<p id="caption">Our method allows for the computation of exact neural SDFs of CSG operations. Here, we train one network to learn the swept volume of a stellated dodecahedron shape, parametric over the control points of the cubic Bézier path it is swept along. Specific swept volumes within this parameter space are then unioned together and with cylinders, resulting in a neural implicit which thanks to our regularization term forms an exact SDF of the word “SDF.”</p>
 	<h2> Abstract </h2>
 	<p>Signed Distance Fields (SDFs) parameterized by neural networks have recently gained popularity as a fundamental geometric representation. However, editing the shape encoded by a neural SDF remains an open challenge. A tempting approach is to leverage common geometric operators (e.g., boolean operations), but such edits often lead to incorrect non-SDF outputs (which we call Pseudo-SDFs), preventing them from being used for downstream tasks. In this paper, we characterize the space of Pseudo-SDFs, which are eikonal yet not true distance functions, and derive the closest point loss, a novel regularizer that encourages the output to be an exact SDF. We demonstrate the applicability of our regularization to many operations in which traditional methods cause a Pseudo-SDF to arise, such as CSG and swept volumes, and produce a true (neural) SDF for the result of these operations.</p>
+	
+	<div id=errata>
+		<em>Errata:</em> There is a typo in equation 15, the inequality should be ≤ not ≥ (included as an Acrobat comment in the PDF linked above).
+	</div>
+
 	<h2> Closest Point Loss </h2>
 	<p> Our work introduces the <em>closest point loss</em>, which can be used to penalize non-SDF regions of neural implicit functions. Unlike the previously used eikonal loss, our loss is able to penalize functions that are eikonal but do not obey the distance property (which we call Pseudo-SDFs).  <br> <br> The formulation of our loss is based off the closest point map, which for an exact SDF uses the distance value and gradient direction to project a point to the zero level set. In order to measure how much a given function deviates from an SDF, we sum the squared distance values of a set of test points after the map is applied. </p>
 	<video class="video" controls>
