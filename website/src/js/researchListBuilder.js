@@ -1,17 +1,22 @@
 window.addEventListener('load', function() {
-	//gets project data from json file
-	fetch('data/paper_data.json')
-	  .then(function(response) {
-	    return response.json()
-	  })
-	  .then(function(json) {
-	  	researchData = json;
-	  	processResearchJson(json);
-	  });
+	let dataToLoad = {'data/paper_data.json': 'research-list', 'data/course_data.json': 'teaching-list'}
+
+	for (const [data, container_id] of Object.entries(dataToLoad)) {
+		//gets project data from json file
+		fetch(data)
+		  .then(function(response) {
+		    return response.json()
+		  })
+		  .then(function(json) {
+		  	researchData = json;
+		  	processResearchJson(json, container_id);
+		  });
+	}
+	
 });
 
-function processResearchJson(jsonObj) {
-	let container = document.getElementById("research-list");
+function processResearchJson(jsonObj, list_id) {
+	let container = document.getElementById(list_id);
 
 	jsonObj.forEach(function(paper) {
 		let outerDiv = document.createElement("div");
